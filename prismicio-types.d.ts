@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | HomeFormCtaSlice
   | HomeInstagramSlice
   | HomeTravelCarouselSlice
   | HomeCarouselSlice
@@ -341,6 +342,71 @@ export type HomeDescriptionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *HomeFormCta → Default → Primary*
+ */
+export interface HomeFormCtaSliceDefaultPrimary {
+  /**
+   * title field in *HomeFormCta → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_form_cta.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *HomeFormCta → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_form_cta.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * cta field in *HomeFormCta → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_form_cta.default.primary.cta
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField;
+}
+
+/**
+ * Default variation for HomeFormCta Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeFormCtaSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HomeFormCtaSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HomeFormCta*
+ */
+type HomeFormCtaSliceVariation = HomeFormCtaSliceDefault;
+
+/**
+ * HomeFormCta Shared Slice
+ *
+ * - **API ID**: `home_form_cta`
+ * - **Description**: HomeFormCta
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeFormCtaSlice = prismic.SharedSlice<
+  "home_form_cta",
+  HomeFormCtaSliceVariation
+>;
+
+/**
  * Item in *HomeInstagram → Default → Primary → instagram*
  */
 export interface HomeInstagramSliceDefaultPrimaryInstagramItem {
@@ -652,6 +718,10 @@ declare module "@prismicio/client" {
       HomeDescriptionSliceDefaultPrimary,
       HomeDescriptionSliceVariation,
       HomeDescriptionSliceDefault,
+      HomeFormCtaSlice,
+      HomeFormCtaSliceDefaultPrimary,
+      HomeFormCtaSliceVariation,
+      HomeFormCtaSliceDefault,
       HomeInstagramSlice,
       HomeInstagramSliceDefaultPrimaryInstagramItem,
       HomeInstagramSliceDefaultPrimarySocialMediaItem,

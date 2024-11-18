@@ -6,6 +6,7 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   home_carousel: dynamic(() => import("./HomeCarousel")),
   home_description: dynamic(() => import("./HomeDescription")),
+  home_form_cta: dynamic(() => import("./HomeFormCta")),
   home_instagram: dynamic(() => import("./HomeInstagram")),
   home_travel_carousel: dynamic(() => import("./HomeTravelCarousel")),
   navigation: dynamic(() => import("./Navigation")),
