@@ -13,7 +13,7 @@ export const repositoryName =
  */
 const routes: prismic.ClientConfig["routes"] = [
   { type: "page", path: "/", uid: "home" },
-  { type: "page", path: "/:uid" },
+  { type: "page", path: "/:uid" }
 ];
 
 /**
@@ -25,11 +25,8 @@ const routes: prismic.ClientConfig["routes"] = [
 export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
   const client = prismic.createClient(sm.apiEndpoint || repositoryName, {
     routes,
-    fetchOptions:
-      process.env.NODE_ENV === "production"
-        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
-        : { next: { revalidate: 5 } },
-    ...config,
+    fetchOptions: { next: { revalidate: 5 } },
+    ...config
   });
 
   prismicNext.enableAutoPreviews({ client });
