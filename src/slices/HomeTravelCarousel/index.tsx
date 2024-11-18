@@ -20,7 +20,10 @@ const HomeTravelCarousel = ({
   slice
 }: HomeTravelCarouselProps): JSX.Element => {
   const slides = slice.primary.carousel.map(({ image }) => (
-    <div className="[&_img]:w-full md:w-[554px] h-full [&_img]:h-full">
+    <div
+      key={image.id}
+      className="[&_img]:w-full md:w-[554px] h-full [&_img]:h-full"
+    >
       <Image src={(image as any).url} width={554} height={554} alt="" />
     </div>
   ));
