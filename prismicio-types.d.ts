@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | HomeInstagramSlice
   | HomeTravelCarouselSlice
   | HomeCarouselSlice
   | HomeDescriptionSlice
@@ -340,6 +341,115 @@ export type HomeDescriptionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *HomeInstagram → Default → Primary → instagram*
+ */
+export interface HomeInstagramSliceDefaultPrimaryInstagramItem {
+  /**
+   * instagram post code field in *HomeInstagram → Default → Primary → instagram*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_instagram.default.primary.instagram[].instagram_post_code
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  instagram_post_code: prismic.KeyTextField;
+}
+
+/**
+ * Item in *HomeInstagram → Default → Primary → social media*
+ */
+export interface HomeInstagramSliceDefaultPrimarySocialMediaItem {
+  /**
+   * logo field in *HomeInstagram → Default → Primary → social media*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_instagram.default.primary.social_media[].logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * link field in *HomeInstagram → Default → Primary → social media*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_instagram.default.primary.social_media[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *HomeInstagram → Default → Primary*
+ */
+export interface HomeInstagramSliceDefaultPrimary {
+  /**
+   * title field in *HomeInstagram → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_instagram.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * instagram field in *HomeInstagram → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_instagram.default.primary.instagram[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  instagram: prismic.GroupField<
+    Simplify<HomeInstagramSliceDefaultPrimaryInstagramItem>
+  >;
+
+  /**
+   * social media field in *HomeInstagram → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_instagram.default.primary.social_media[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  social_media: prismic.GroupField<
+    Simplify<HomeInstagramSliceDefaultPrimarySocialMediaItem>
+  >;
+}
+
+/**
+ * Default variation for HomeInstagram Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeInstagramSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HomeInstagramSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HomeInstagram*
+ */
+type HomeInstagramSliceVariation = HomeInstagramSliceDefault;
+
+/**
+ * HomeInstagram Shared Slice
+ *
+ * - **API ID**: `home_instagram`
+ * - **Description**: HomeInstagram
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeInstagramSlice = prismic.SharedSlice<
+  "home_instagram",
+  HomeInstagramSliceVariation
+>;
+
+/**
  * Item in *HomeTravelCarousel → Default → Primary → carousel*
  */
 export interface HomeTravelCarouselSliceDefaultPrimaryCarouselItem {
@@ -542,6 +652,12 @@ declare module "@prismicio/client" {
       HomeDescriptionSliceDefaultPrimary,
       HomeDescriptionSliceVariation,
       HomeDescriptionSliceDefault,
+      HomeInstagramSlice,
+      HomeInstagramSliceDefaultPrimaryInstagramItem,
+      HomeInstagramSliceDefaultPrimarySocialMediaItem,
+      HomeInstagramSliceDefaultPrimary,
+      HomeInstagramSliceVariation,
+      HomeInstagramSliceDefault,
       HomeTravelCarouselSlice,
       HomeTravelCarouselSliceDefaultPrimaryCarouselItem,
       HomeTravelCarouselSliceDefaultPrimary,

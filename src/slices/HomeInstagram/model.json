@@ -1,0 +1,71 @@
+{
+  "id": "home_instagram",
+  "type": "SharedSlice",
+  "name": "HomeInstagram",
+  "description": "HomeInstagram",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "instagram": {
+          "type": "Group",
+          "config": {
+            "label": "instagram",
+            "repeat": true,
+            "fields": {
+              "instagram_post_code": {
+                "type": "Text",
+                "config": {
+                  "label": "instagram post code",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "social_media": {
+          "type": "Group",
+          "config": {
+            "label": "social media",
+            "repeat": true,
+            "fields": {
+              "logo": {
+                "type": "Image",
+                "config": {
+                  "label": "logo",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "link",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
