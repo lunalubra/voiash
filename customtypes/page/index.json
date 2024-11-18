@@ -27,6 +27,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "home_travel_carousel": {
+              "type": "SharedSlice"
+            },
+            "home_carousel": {
+              "type": "SharedSlice"
+            },
             "home_description": {
               "type": "SharedSlice"
             },

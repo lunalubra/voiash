@@ -5,6 +5,8 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | HomeTravelCarouselSlice
+  | HomeCarouselSlice
   | HomeDescriptionSlice
   | HeroSlice
   | NavigationSlice;
@@ -144,6 +146,98 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *HomeCarousel → Default → Primary → carousel*
+ */
+export interface HomeCarouselSliceDefaultPrimaryCarouselItem {
+  /**
+   * image field in *HomeCarousel → Default → Primary → carousel*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_carousel.default.primary.carousel[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *HomeCarousel → Default → Primary*
+ */
+export interface HomeCarouselSliceDefaultPrimary {
+  /**
+   * title field in *HomeCarousel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_carousel.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * subtitle field in *HomeCarousel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_carousel.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * cta field in *HomeCarousel → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_carousel.default.primary.cta
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField;
+
+  /**
+   * carousel field in *HomeCarousel → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_carousel.default.primary.carousel[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  carousel: prismic.GroupField<
+    Simplify<HomeCarouselSliceDefaultPrimaryCarouselItem>
+  >;
+}
+
+/**
+ * Default variation for HomeCarousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeCarouselSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HomeCarouselSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HomeCarousel*
+ */
+type HomeCarouselSliceVariation = HomeCarouselSliceDefault;
+
+/**
+ * HomeCarousel Shared Slice
+ *
+ * - **API ID**: `home_carousel`
+ * - **Description**: HomeCarousel
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeCarouselSlice = prismic.SharedSlice<
+  "home_carousel",
+  HomeCarouselSliceVariation
+>;
+
+/**
  * Item in *HomeDescription → Default → Primary → products*
  */
 export interface HomeDescriptionSliceDefaultPrimaryProductsItem {
@@ -243,6 +337,88 @@ type HomeDescriptionSliceVariation = HomeDescriptionSliceDefault;
 export type HomeDescriptionSlice = prismic.SharedSlice<
   "home_description",
   HomeDescriptionSliceVariation
+>;
+
+/**
+ * Item in *HomeTravelCarousel → Default → Primary → carousel*
+ */
+export interface HomeTravelCarouselSliceDefaultPrimaryCarouselItem {
+  /**
+   * image field in *HomeTravelCarousel → Default → Primary → carousel*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_travel_carousel.default.primary.carousel[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *HomeTravelCarousel → Default → Primary*
+ */
+export interface HomeTravelCarouselSliceDefaultPrimary {
+  /**
+   * title field in *HomeTravelCarousel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_travel_carousel.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * cta field in *HomeTravelCarousel → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_travel_carousel.default.primary.cta
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField;
+
+  /**
+   * carousel field in *HomeTravelCarousel → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_travel_carousel.default.primary.carousel[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  carousel: prismic.GroupField<
+    Simplify<HomeTravelCarouselSliceDefaultPrimaryCarouselItem>
+  >;
+}
+
+/**
+ * Default variation for HomeTravelCarousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeTravelCarouselSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HomeTravelCarouselSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HomeTravelCarousel*
+ */
+type HomeTravelCarouselSliceVariation = HomeTravelCarouselSliceDefault;
+
+/**
+ * HomeTravelCarousel Shared Slice
+ *
+ * - **API ID**: `home_travel_carousel`
+ * - **Description**: HomeTravelCarousel
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeTravelCarouselSlice = prismic.SharedSlice<
+  "home_travel_carousel",
+  HomeTravelCarouselSliceVariation
 >;
 
 /**
@@ -356,11 +532,21 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      HomeCarouselSlice,
+      HomeCarouselSliceDefaultPrimaryCarouselItem,
+      HomeCarouselSliceDefaultPrimary,
+      HomeCarouselSliceVariation,
+      HomeCarouselSliceDefault,
       HomeDescriptionSlice,
       HomeDescriptionSliceDefaultPrimaryProductsItem,
       HomeDescriptionSliceDefaultPrimary,
       HomeDescriptionSliceVariation,
       HomeDescriptionSliceDefault,
+      HomeTravelCarouselSlice,
+      HomeTravelCarouselSliceDefaultPrimaryCarouselItem,
+      HomeTravelCarouselSliceDefaultPrimary,
+      HomeTravelCarouselSliceVariation,
+      HomeTravelCarouselSliceDefault,
       NavigationSlice,
       NavigationSliceDefaultPrimaryNavigationItemItem,
       NavigationSliceDefaultPrimary,

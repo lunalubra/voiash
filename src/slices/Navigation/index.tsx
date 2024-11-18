@@ -139,7 +139,12 @@ const MobileNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
 
 const Navigation = ({ slice }: NavigationProps): JSX.Element => {
   return (
-    <div className="w-full fixed top-0 left-1/2 -translate-x-1/2 z-50">
+    <div
+      className="w-full fixed top-0 left-1/2 -translate-x-1/2 z-50"
+      // style={{
+      //   backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.1) 80%, rgba(0,0,0,0) 100%)`
+      // }}
+    >
       <div className="w-full hidden md:flex">
         <DesktopNavigation slice={slice} />
       </div>
