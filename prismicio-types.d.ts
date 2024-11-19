@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | TravelDescriptionSlice
   | FooterSlice
   | HomeFormCtaSlice
   | HomeInstagramSlice
@@ -767,6 +768,71 @@ export type NavigationSlice = prismic.SharedSlice<
   NavigationSliceVariation
 >;
 
+/**
+ * Primary content in *TravelDescription → Default → Primary*
+ */
+export interface TravelDescriptionSliceDefaultPrimary {
+  /**
+   * title field in *TravelDescription → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel_description.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *TravelDescription → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel_description.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * cta field in *TravelDescription → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel_description.default.primary.cta
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField;
+}
+
+/**
+ * Default variation for TravelDescription Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TravelDescriptionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TravelDescriptionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TravelDescription*
+ */
+type TravelDescriptionSliceVariation = TravelDescriptionSliceDefault;
+
+/**
+ * TravelDescription Shared Slice
+ *
+ * - **API ID**: `travel_description`
+ * - **Description**: TravelDescription
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TravelDescriptionSlice = prismic.SharedSlice<
+  "travel_description",
+  TravelDescriptionSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -831,6 +897,10 @@ declare module "@prismicio/client" {
       NavigationSliceDefaultPrimary,
       NavigationSliceVariation,
       NavigationSliceDefault,
+      TravelDescriptionSlice,
+      TravelDescriptionSliceDefaultPrimary,
+      TravelDescriptionSliceVariation,
+      TravelDescriptionSliceDefault,
     };
   }
 }

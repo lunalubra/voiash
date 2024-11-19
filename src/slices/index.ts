@@ -11,4 +11,5 @@ export const components = {
   home_instagram: dynamic(() => import("./HomeInstagram")),
   home_travel_carousel: dynamic(() => import("./HomeTravelCarousel")),
   navigation: dynamic(() => import("./Navigation")),
+  travel_description: dynamic(() => import("./TravelDescription")),
 };

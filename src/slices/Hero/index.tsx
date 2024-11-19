@@ -37,9 +37,11 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           <Image src={media.url} width={1280} height={720} alt="" />
         </div>
       ) : (
-        "video"
+        <div className="w-full absolute -top-1/2 translate-y-1/2 left-50 -z-[1] [&_video]:min-w-min md:[&_video]:min-w-auto [&_video]:w-full h-[667px] [&_video]:h-[667px] md:[&_video]:h-auto md:h-[720px] overflow-hidden">
+          <video src={media?.url} autoPlay muted loop />
+        </div>
       )}
-      <div className="flex w-full h-full items-center justify-center flex-col">
+      <div className="flex w-full h-full items-center justify-center flex-col bg-[radial-gradient(circle,_rgba(0,0,0,0.4)_0%,_rgba(0,0,0,0)_100%)]">
         <div className="font-playfair text-3xl text-center md:text-4xl text-brand-beige-200">
           <PrismicRichText field={slice.primary.title} />
         </div>

@@ -1,0 +1,39 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nostrud ullamco id ad esse sit et incididunt voluptate sunt aliqua nostrud mollit Lorem sunt. Eu qui excepteur excepteur ad."
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Officia sit aute ex eu cupidatat. Velit veniam proident nulla."
+						}
+					}
+				]
+			},
+			"cta": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev",
+					"text": "job"
+				}
+			}
+		},
+		"items": []
+	}
+]
