@@ -1,7 +1,6 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import Image from "next/image";
 
 /**
  * Props for `Hero`.
@@ -33,11 +32,14 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       className="w-full relative h-[667px] md:h-[720px]"
     >
       {isImage ? (
-        <div className="w-full absolute top-0 left-0 -z-[1] [&_img]:w-full [&_img]:h-[667px] md:[&_img]:h-[720px]">
-          <Image src={media.url} width={1280} height={720} alt="" />
-        </div>
+        <div
+          style={{
+            backgroundImage: `linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%), url('${media.url}')`
+          }}
+          className="w-full absolute top-0 left-0 -z-[1] h-[667px] md:h-[720px] bg-no-repeat bg-center bg-cover"
+        />
       ) : (
-        <div className="w-full absolute -top-1/2 translate-y-1/2 left-50 -z-[1] [&_video]:min-w-min md:[&_video]:min-w-auto [&_video]:w-full h-[667px] [&_video]:h-[667px] md:[&_video]:h-auto md:h-[720px] overflow-hidden">
+        <div className="w-full absolute -top-1/2 translate-y-1/2 left-50 -z-[1] [&_video]:min-w-min md:[&_video]:min-w-full [&_video]:w-full h-[667px] [&_video]:h-[667px] md:[&_video]:h-auto md:h-[720px] overflow-hidden">
           <video src={media?.url} autoPlay muted loop />
         </div>
       )}

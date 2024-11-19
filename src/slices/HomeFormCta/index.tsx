@@ -17,7 +17,7 @@ const HomeFormCta = ({ slice }: HomeFormCtaProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="w-full bg-[#162136]"
     >
-      <div className="max-w-[490px] m-auto flex flex-col items-center text-center gap-6 py-11 px-6">
+      <div className="max-w-[490px] md:max-w-[520px] m-auto flex flex-col items-center text-center gap-6 py-11 px-6">
         <div className="font-playfair text-2xl md:text-3xl text-brand-beige">
           <PrismicRichText field={slice.primary.title} />
         </div>

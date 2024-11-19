@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | TravelWhySlice
   | TravelTripsSlice
   | TravelDescriptionSlice
   | FooterSlice
@@ -1040,6 +1041,96 @@ export type TravelTripsSlice = prismic.SharedSlice<
   TravelTripsSliceVariation
 >;
 
+/**
+ * Item in *TravelWhy → Default → Primary → items*
+ */
+export interface TravelWhySliceDefaultPrimaryItemsItem {
+  /**
+   * description field in *TravelWhy → Default → Primary → items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel_why.default.primary.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *TravelWhy → Default → Primary*
+ */
+export interface TravelWhySliceDefaultPrimary {
+  /**
+   * title field in *TravelWhy → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel_why.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *TravelWhy → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel_why.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * cta field in *TravelWhy → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel_why.default.primary.cta
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField;
+
+  /**
+   * items field in *TravelWhy → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel_why.default.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<TravelWhySliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for TravelWhy Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TravelWhySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TravelWhySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TravelWhy*
+ */
+type TravelWhySliceVariation = TravelWhySliceDefault;
+
+/**
+ * TravelWhy Shared Slice
+ *
+ * - **API ID**: `travel_why`
+ * - **Description**: TravelWhy
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TravelWhySlice = prismic.SharedSlice<
+  "travel_why",
+  TravelWhySliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1118,6 +1209,11 @@ declare module "@prismicio/client" {
       TravelTripsSliceDefaultPrimary,
       TravelTripsSliceVariation,
       TravelTripsSliceDefault,
+      TravelWhySlice,
+      TravelWhySliceDefaultPrimaryItemsItem,
+      TravelWhySliceDefaultPrimary,
+      TravelWhySliceVariation,
+      TravelWhySliceDefault,
     };
   }
 }

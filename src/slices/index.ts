@@ -13,4 +13,5 @@ export const components = {
   navigation: dynamic(() => import("./Navigation")),
   travel_description: dynamic(() => import("./TravelDescription")),
   travel_trips: dynamic(() => import("./TravelTrips")),
+  travel_why: dynamic(() => import("./TravelWhy")),
 };
