@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | TravelTripsSlice
   | TravelDescriptionSlice
   | FooterSlice
   | HomeFormCtaSlice
@@ -85,7 +86,151 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = PageDocument;
+/**
+ * Item in *Tipos de viajes → trips*
+ */
+export interface TiposDeViajesDocumentDataViajesItem {
+  /**
+   * trip field in *Tipos de viajes → trips*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tipos_de_viajes.viajes[].trip
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  trip: prismic.ContentRelationshipField<"viajes">;
+}
+
+/**
+ * Content for Tipos de viajes documents
+ */
+interface TiposDeViajesDocumentData {
+  /**
+   * title field in *Tipos de viajes*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tipos_de_viajes.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * image field in *Tipos de viajes*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tipos_de_viajes.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * punchline field in *Tipos de viajes*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tipos_de_viajes.punchline
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  punchline: prismic.RichTextField;
+
+  /**
+   * description field in *Tipos de viajes*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tipos_de_viajes.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * trips field in *Tipos de viajes*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tipos_de_viajes.viajes[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  viajes: prismic.GroupField<Simplify<TiposDeViajesDocumentDataViajesItem>>;
+
+  /**
+   * cta field in *Tipos de viajes*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tipos_de_viajes.cta
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField;
+}
+
+/**
+ * Tipos de viajes document from Prismic
+ *
+ * - **API ID**: `tipos_de_viajes`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TiposDeViajesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<TiposDeViajesDocumentData>,
+    "tipos_de_viajes",
+    Lang
+  >;
+
+/**
+ * Content for Viaje documents
+ */
+interface ViajesDocumentData {
+  /**
+   * title field in *Viaje*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: viajes.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * image field in *Viaje*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: viajes.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Viaje document from Prismic
+ *
+ * - **API ID**: `viajes`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ViajesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<ViajesDocumentData>, "viajes", Lang>;
+
+export type AllDocumentTypes =
+  | PageDocument
+  | TiposDeViajesDocument
+  | ViajesDocument;
 
 /**
  * Item in *Footer → Default → Primary → logos*
@@ -833,6 +978,68 @@ export type TravelDescriptionSlice = prismic.SharedSlice<
   TravelDescriptionSliceVariation
 >;
 
+/**
+ * Item in *TravelTrips → Default → Primary → trips types*
+ */
+export interface TravelTripsSliceDefaultPrimaryTripsTypesItem {
+  /**
+   * trip types field in *TravelTrips → Default → Primary → trips types*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel_trips.default.primary.trips_types[].trip_types
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  trip_types: prismic.ContentRelationshipField<"tipos_de_viajes">;
+}
+
+/**
+ * Primary content in *TravelTrips → Default → Primary*
+ */
+export interface TravelTripsSliceDefaultPrimary {
+  /**
+   * trips types field in *TravelTrips → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel_trips.default.primary.trips_types[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  trips_types: prismic.GroupField<
+    Simplify<TravelTripsSliceDefaultPrimaryTripsTypesItem>
+  >;
+}
+
+/**
+ * Default variation for TravelTrips Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TravelTripsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TravelTripsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TravelTrips*
+ */
+type TravelTripsSliceVariation = TravelTripsSliceDefault;
+
+/**
+ * TravelTrips Shared Slice
+ *
+ * - **API ID**: `travel_trips`
+ * - **Description**: TravelTrips
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TravelTripsSlice = prismic.SharedSlice<
+  "travel_trips",
+  TravelTripsSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -857,6 +1064,11 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      TiposDeViajesDocument,
+      TiposDeViajesDocumentData,
+      TiposDeViajesDocumentDataViajesItem,
+      ViajesDocument,
+      ViajesDocumentData,
       AllDocumentTypes,
       FooterSlice,
       FooterSliceDefaultPrimaryLogosItem,
@@ -901,6 +1113,11 @@ declare module "@prismicio/client" {
       TravelDescriptionSliceDefaultPrimary,
       TravelDescriptionSliceVariation,
       TravelDescriptionSliceDefault,
+      TravelTripsSlice,
+      TravelTripsSliceDefaultPrimaryTripsTypesItem,
+      TravelTripsSliceDefaultPrimary,
+      TravelTripsSliceVariation,
+      TravelTripsSliceDefault,
     };
   }
 }

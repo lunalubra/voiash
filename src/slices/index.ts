@@ -12,4 +12,5 @@ export const components = {
   home_travel_carousel: dynamic(() => import("./HomeTravelCarousel")),
   navigation: dynamic(() => import("./Navigation")),
   travel_description: dynamic(() => import("./TravelDescription")),
+  travel_trips: dynamic(() => import("./TravelTrips")),
 };

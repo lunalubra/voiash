@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "travel_trips": {
+              "type": "SharedSlice"
+            },
             "travel_description": {
               "type": "SharedSlice"
             },

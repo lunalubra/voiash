@@ -1,0 +1,79 @@
+{
+  "format": "custom",
+  "id": "tipos_de_viajes",
+  "label": "Tipos de viajes",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "punchline": {
+        "type": "StructuredText",
+        "config": {
+          "label": "punchline",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "viajes": {
+        "type": "Group",
+        "config": {
+          "label": "trips",
+          "repeat": true,
+          "fields": {
+            "trip": {
+              "type": "Link",
+              "config": {
+                "label": "trip",
+                "select": "document",
+                "customtypes": ["viajes"]
+              }
+            }
+          }
+        }
+      },
+      "cta": {
+        "type": "Link",
+        "config": {
+          "label": "cta",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null,
+          "allowText": true
+        }
+      }
+    }
+  }
+}

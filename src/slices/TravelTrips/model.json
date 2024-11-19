@@ -1,0 +1,38 @@
+{
+  "id": "travel_trips",
+  "type": "SharedSlice",
+  "name": "TravelTrips",
+  "description": "TravelTrips",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "trips_types": {
+          "type": "Group",
+          "config": {
+            "label": "trips types",
+            "repeat": true,
+            "fields": {
+              "trip_types": {
+                "type": "Link",
+                "config": {
+                  "label": "trip types",
+                  "select": "document",
+                  "customtypes": [
+                    "tipos_de_viajes"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
