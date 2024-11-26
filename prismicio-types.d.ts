@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | HoneymoonFlipbookSlice
   | TravelWhySlice
   | TravelTripsSlice
   | TravelDescriptionSlice
@@ -833,6 +834,51 @@ export type HomeTravelCarouselSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *HoneymoonFlipbook → Default → Primary*
+ */
+export interface HoneymoonFlipbookSliceDefaultPrimary {
+  /**
+   * pdf field in *HoneymoonFlipbook → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: honeymoon_flipbook.default.primary.pdf
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  pdf: prismic.LinkToMediaField;
+}
+
+/**
+ * Default variation for HoneymoonFlipbook Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HoneymoonFlipbookSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HoneymoonFlipbookSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HoneymoonFlipbook*
+ */
+type HoneymoonFlipbookSliceVariation = HoneymoonFlipbookSliceDefault;
+
+/**
+ * HoneymoonFlipbook Shared Slice
+ *
+ * - **API ID**: `honeymoon_flipbook`
+ * - **Description**: HoneymoonFlipbook
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HoneymoonFlipbookSlice = prismic.SharedSlice<
+  "honeymoon_flipbook",
+  HoneymoonFlipbookSliceVariation
+>;
+
+/**
  * Item in *Navigation → Default → Primary → navigation item*
  */
 export interface NavigationSliceDefaultPrimaryNavigationItemItem {
@@ -1195,6 +1241,10 @@ declare module "@prismicio/client" {
       HomeTravelCarouselSliceDefaultPrimary,
       HomeTravelCarouselSliceVariation,
       HomeTravelCarouselSliceDefault,
+      HoneymoonFlipbookSlice,
+      HoneymoonFlipbookSliceDefaultPrimary,
+      HoneymoonFlipbookSliceVariation,
+      HoneymoonFlipbookSliceDefault,
       NavigationSlice,
       NavigationSliceDefaultPrimaryNavigationItemItem,
       NavigationSliceDefaultPrimary,

@@ -1,0 +1,28 @@
+{
+  "id": "honeymoon_flipbook",
+  "type": "SharedSlice",
+  "name": "HoneymoonFlipbook",
+  "description": "HoneymoonFlipbook",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "pdf": {
+          "type": "Link",
+          "config": {
+            "label": "pdf",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
