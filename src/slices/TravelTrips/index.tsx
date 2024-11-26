@@ -112,8 +112,8 @@ const TripTypes = ({
                 </div>
               </div>
               <div className="flex gap-4 md:flex-1 max-w-full overflow-auto no-scrollbar px-6 mt-2 md:mt-0 md:px-0">
-                {trips?.map((trip) => (
-                  <div key={trip?.id}>
+                {trips?.map((trip, index) => (
+                  <div key={`${trip?.id}-${index}`}>
                     <div
                       style={{
                         backgroundImage: `linear-gradient(360deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 25%), url('${tripTypes.data?.image.url}')`

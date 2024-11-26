@@ -34,7 +34,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       {isImage ? (
         <div
           style={{
-            backgroundImage: `linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%), url('${media.url}')`
+            backgroundImage: `url('${media.url}')`
           }}
           className="w-full absolute top-0 left-0 -z-[1] h-[667px] md:h-[720px] bg-no-repeat bg-center bg-cover"
         />

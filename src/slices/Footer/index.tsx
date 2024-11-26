@@ -26,7 +26,7 @@ const Footer = ({ slice }: FooterProps): JSX.Element => {
       </div>
       <div className="flex items-center justify-between text-center">
         <div>
-          <PrismicNextImage field={slice.primary.logo} />
+          <PrismicNextImage field={slice.primary.logo} alt="" />
         </div>
         <div className="text-brand-beige-400 font-martel text-[10px] leading-4 max-w-[620px]">
           <PrismicRichText field={slice.primary.disclaimer} />
