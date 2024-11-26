@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import dynamic from "next/dynamic";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.mjs`;
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.mjs`;
 
 function Flipbook({ pdfLink }: { pdfLink: string }) {
   const [numPages, setNumPages] = useState(5);
