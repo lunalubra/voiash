@@ -15,6 +15,7 @@ function Flipbook() {
   }
 
   return (
+    // @ts-ignore
     <HTMLFlipBook
       width={400}
       height={570}
