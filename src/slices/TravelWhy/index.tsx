@@ -29,7 +29,7 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
         </div>
         <div className="flex flex-col gap-20 justify-center max-w-[425px] my-6">
           {slice.primary.items.map((item, index) => (
-            <div className="w-full flex gap-9 items-start">
+            <div key={index} className="w-full flex gap-9 items-start">
               <div className="font-playfair text-[150px] leading-[75px] md:text-[170px] md:leading-[85px] text-brand-beige-300">
                 {index + 1}
               </div>
