@@ -1,3 +1,5 @@
+"use client";
+
 import Flipbook from "@/components/Flipbook";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
