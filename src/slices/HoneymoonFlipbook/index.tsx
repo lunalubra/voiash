@@ -12,6 +12,10 @@ export type HoneymoonFlipbookProps =
  * Component for "HoneymoonFlipbook" Slices.
  */
 const HoneymoonFlipbook = ({ slice }: HoneymoonFlipbookProps): JSX.Element => {
+  if (typeof window === "undefined") {
+    return <></>;
+  }
+
   return (
     <section
       data-slice-type={slice.slice_type}
