@@ -1,7 +1,6 @@
 import Flipbook from "@/components/Flipbook";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-
 /**
  * Props for `HoneymoonFlipbook`.
  */
@@ -12,10 +11,6 @@ export type HoneymoonFlipbookProps =
  * Component for "HoneymoonFlipbook" Slices.
  */
 const HoneymoonFlipbook = ({ slice }: HoneymoonFlipbookProps): JSX.Element => {
-  if (typeof window === "undefined") {
-    return <></>;
-  }
-
   return (
     <section
       data-slice-type={slice.slice_type}

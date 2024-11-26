@@ -4,6 +4,7 @@ import React from "react";
 import HTMLFlipBook from "react-pageflip";
 import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
+import dynamic from "next/dynamic";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.mjs`;
 
@@ -15,8 +16,8 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
   }
 
   return (
-    <div>
-      <div className="hidden md:flex">
+    <div className="w-full flex items-center justify-center">
+      <div className="hidden md:flex w-full items-center justify-center">
         {/* @ts-ignore */}
         <HTMLFlipBook
           width={400}
@@ -60,7 +61,7 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
           ))}
         </HTMLFlipBook>
       </div>
-      <div className="flex md:hidden">
+      <div className="flex md:hidden w-full items-center justify-center">
         {/* @ts-ignore */}
         <HTMLFlipBook
           width={320}
@@ -108,4 +109,6 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
   );
 }
 
-export default Flipbook;
+export default dynamic(() => Promise.resolve(Flipbook), {
+  ssr: false
+});
