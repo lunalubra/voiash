@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | AboutUsDescriptionSlice
   | AboutUsHeroSlice
   | HoneymoonDesignSlice
   | HoneymoonFlipbookSlice
@@ -235,6 +236,91 @@ export type AllDocumentTypes =
   | PageDocument
   | TiposDeViajesDocument
   | ViajesDocument;
+
+/**
+ * Primary content in *AboutUsDescription → Default → Primary*
+ */
+export interface AboutUsDescriptionSliceDefaultPrimary {
+  /**
+   * title field in *AboutUsDescription → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_description.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *AboutUsDescription → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_description.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * cta field in *AboutUsDescription → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_description.default.primary.cta
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField;
+
+  /**
+   * first image field in *AboutUsDescription → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_description.default.primary.first_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  first_image: prismic.ImageField<never>;
+
+  /**
+   * second image field in *AboutUsDescription → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_description.default.primary.second_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  second_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for AboutUsDescription Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsDescriptionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutUsDescriptionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUsDescription*
+ */
+type AboutUsDescriptionSliceVariation = AboutUsDescriptionSliceDefault;
+
+/**
+ * AboutUsDescription Shared Slice
+ *
+ * - **API ID**: `about_us_description`
+ * - **Description**: AboutUsDescription
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsDescriptionSlice = prismic.SharedSlice<
+  "about_us_description",
+  AboutUsDescriptionSliceVariation
+>;
 
 /**
  * Primary content in *AboutUsHero → Default → Primary*
@@ -1366,6 +1452,10 @@ declare module "@prismicio/client" {
       ViajesDocument,
       ViajesDocumentData,
       AllDocumentTypes,
+      AboutUsDescriptionSlice,
+      AboutUsDescriptionSliceDefaultPrimary,
+      AboutUsDescriptionSliceVariation,
+      AboutUsDescriptionSliceDefault,
       AboutUsHeroSlice,
       AboutUsHeroSliceDefaultPrimary,
       AboutUsHeroSliceVariation,
