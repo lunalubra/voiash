@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | AboutUsHeroSlice
   | HoneymoonDesignSlice
   | HoneymoonFlipbookSlice
   | TravelWhySlice
@@ -234,6 +235,61 @@ export type AllDocumentTypes =
   | PageDocument
   | TiposDeViajesDocument
   | ViajesDocument;
+
+/**
+ * Primary content in *AboutUsHero → Default → Primary*
+ */
+export interface AboutUsHeroSliceDefaultPrimary {
+  /**
+   * title field in *AboutUsHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_hero.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *AboutUsHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_hero.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for AboutUsHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutUsHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUsHero*
+ */
+type AboutUsHeroSliceVariation = AboutUsHeroSliceDefault;
+
+/**
+ * AboutUsHero Shared Slice
+ *
+ * - **API ID**: `about_us_hero`
+ * - **Description**: AboutUsHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsHeroSlice = prismic.SharedSlice<
+  "about_us_hero",
+  AboutUsHeroSliceVariation
+>;
 
 /**
  * Item in *Footer → Default → Primary → logos*
@@ -1310,6 +1366,10 @@ declare module "@prismicio/client" {
       ViajesDocument,
       ViajesDocumentData,
       AllDocumentTypes,
+      AboutUsHeroSlice,
+      AboutUsHeroSliceDefaultPrimary,
+      AboutUsHeroSliceVariation,
+      AboutUsHeroSliceDefault,
       FooterSlice,
       FooterSliceDefaultPrimaryLogosItem,
       FooterSliceDefaultPrimary,

@@ -19,7 +19,7 @@ const HoneymoonDesign = ({ slice }: HoneymoonDesignProps): JSX.Element => {
       className="bg-[#f5f5f5]"
     >
       <div className="w-full max-w-screen-xl m-auto flex flex-col items-center justify-center py-10 gap-5">
-        <div className="m-auto w-full max-w-[660px] font-playfair text-5xl text-brand-beige-300 [&_strong]:text-7xl text-right">
+        <div className="m-auto w-full max-w-[660px] font-playfair text-4xl md:text-5xl text-brand-beige-300 [&_strong]:text-7xl text-right">
           <PrismicRichText field={slice.primary.title} />
         </div>
         <div className="max-w-[660px] font-martel text-brand-beige-400 md:text-lg text-center">
@@ -32,17 +32,17 @@ const HoneymoonDesign = ({ slice }: HoneymoonDesignProps): JSX.Element => {
           {slice.primary.items.map((item, index) => (
             <div
               key={index}
-              className="bg-white shadow-xl w-[565px] h-[453px] rounded-3xl flex flex-col items-center justify-center gap-16"
+              className="bg-white shadow-xl w-[370px] h-min md:w-[565px] md:h-[453px] rounded-3xl flex flex-col items-start md:items-center justify-center gap-8 md:gap-16 p-5 md:p-0"
             >
               <div className="flex items-start">
-                <div className="font-playfair text-[150px] md:text-[170px] md:leading-[65px] text-brand-beige-300">
+                <div className="font-playfair text-[150px] md:text-[170px] leading-[65px] md:leading-[65px] text-brand-beige-300">
                   {index + 1}
                 </div>
                 <div className="text-5xl font-playfair text-brand-beige-300 [&_strong]:block">
                   <PrismicRichText field={item.title} />
                 </div>
               </div>
-              <div className="font-martel text-brand-beige-400 md:text-lg text-center max-w-[350px]">
+              <div className="font-martel text-brand-beige-400 md:text-lg text-justify md:text-center max-w-[350px]">
                 <PrismicRichText field={item.description} />
               </div>
             </div>
