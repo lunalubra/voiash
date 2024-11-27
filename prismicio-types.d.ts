@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | AboutUsTestimonialsSlice
   | AboutUsValuesSlice
   | AboutUsQuoteSlice
   | AboutUsDescriptionSlice
@@ -422,6 +423,88 @@ type AboutUsQuoteSliceVariation = AboutUsQuoteSliceDefault;
 export type AboutUsQuoteSlice = prismic.SharedSlice<
   "about_us_quote",
   AboutUsQuoteSliceVariation
+>;
+
+/**
+ * Item in *AboutUsTestimonials → Default → Primary → testimonials*
+ */
+export interface AboutUsTestimonialsSliceDefaultPrimaryTestimonialsItem {
+  /**
+   * rating field in *AboutUsTestimonials → Default → Primary → testimonials*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_testimonials.default.primary.testimonials[].rating
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  rating: prismic.NumberField;
+
+  /**
+   * description field in *AboutUsTestimonials → Default → Primary → testimonials*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_testimonials.default.primary.testimonials[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *AboutUsTestimonials → Default → Primary*
+ */
+export interface AboutUsTestimonialsSliceDefaultPrimary {
+  /**
+   * title field in *AboutUsTestimonials → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_testimonials.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * testimonials field in *AboutUsTestimonials → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_testimonials.default.primary.testimonials[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  testimonials: prismic.GroupField<
+    Simplify<AboutUsTestimonialsSliceDefaultPrimaryTestimonialsItem>
+  >;
+}
+
+/**
+ * Default variation for AboutUsTestimonials Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsTestimonialsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutUsTestimonialsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUsTestimonials*
+ */
+type AboutUsTestimonialsSliceVariation = AboutUsTestimonialsSliceDefault;
+
+/**
+ * AboutUsTestimonials Shared Slice
+ *
+ * - **API ID**: `about_us_testimonials`
+ * - **Description**: AboutUsTestimonials
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsTestimonialsSlice = prismic.SharedSlice<
+  "about_us_testimonials",
+  AboutUsTestimonialsSliceVariation
 >;
 
 /**
@@ -1576,6 +1659,11 @@ declare module "@prismicio/client" {
       AboutUsQuoteSliceDefaultPrimary,
       AboutUsQuoteSliceVariation,
       AboutUsQuoteSliceDefault,
+      AboutUsTestimonialsSlice,
+      AboutUsTestimonialsSliceDefaultPrimaryTestimonialsItem,
+      AboutUsTestimonialsSliceDefaultPrimary,
+      AboutUsTestimonialsSliceVariation,
+      AboutUsTestimonialsSliceDefault,
       AboutUsValuesSlice,
       AboutUsValuesSliceDefaultPrimary,
       AboutUsValuesSliceVariation,
