@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "about_us_press": {
+              "type": "SharedSlice"
+            },
             "about_us_testimonials": {
               "type": "SharedSlice"
             },

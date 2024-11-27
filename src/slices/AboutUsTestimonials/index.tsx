@@ -19,9 +19,9 @@ const AboutUsTestimonials = ({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="md:bg-[#f5f5f5] py-16"
+      className="md:bg-[#f5f5f5] pt-16 md:py-16"
     >
-      <div className="w-full max-w-screen-xl m-auto py-10 md:bg-[#eaeaea] flex flex-col gap-8 relative">
+      <div className="w-full max-w-screen-xl m-auto pt-10 md:py-10 md:bg-[#eaeaea] flex flex-col gap-8 relative">
         <div className="px-4 font-playfair text-[150px] md:text-[300px] md:absolute top-0 left-0 text-[#162136] leading-[16px] mt-10">
           “
         </div>

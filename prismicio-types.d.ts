@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | AboutUsPressSlice
   | AboutUsTestimonialsSlice
   | AboutUsValuesSlice
   | AboutUsQuoteSlice
@@ -378,6 +379,108 @@ type AboutUsHeroSliceVariation = AboutUsHeroSliceDefault;
 export type AboutUsHeroSlice = prismic.SharedSlice<
   "about_us_hero",
   AboutUsHeroSliceVariation
+>;
+
+/**
+ * Item in *AboutUsPress → Default → Primary → press notes*
+ */
+export interface AboutUsPressSliceDefaultPrimaryPressNotesItem {
+  /**
+   * logo field in *AboutUsPress → Default → Primary → press notes*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_press.default.primary.press_notes[].logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * description field in *AboutUsPress → Default → Primary → press notes*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_press.default.primary.press_notes[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * cta field in *AboutUsPress → Default → Primary → press notes*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_press.default.primary.press_notes[].cta
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField;
+}
+
+/**
+ * Primary content in *AboutUsPress → Default → Primary*
+ */
+export interface AboutUsPressSliceDefaultPrimary {
+  /**
+   * title field in *AboutUsPress → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_press.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *AboutUsPress → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_press.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * press notes field in *AboutUsPress → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_press.default.primary.press_notes[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  press_notes: prismic.GroupField<
+    Simplify<AboutUsPressSliceDefaultPrimaryPressNotesItem>
+  >;
+}
+
+/**
+ * Default variation for AboutUsPress Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsPressSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutUsPressSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUsPress*
+ */
+type AboutUsPressSliceVariation = AboutUsPressSliceDefault;
+
+/**
+ * AboutUsPress Shared Slice
+ *
+ * - **API ID**: `about_us_press`
+ * - **Description**: AboutUsPress
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsPressSlice = prismic.SharedSlice<
+  "about_us_press",
+  AboutUsPressSliceVariation
 >;
 
 /**
@@ -1655,6 +1758,11 @@ declare module "@prismicio/client" {
       AboutUsHeroSliceDefaultPrimary,
       AboutUsHeroSliceVariation,
       AboutUsHeroSliceDefault,
+      AboutUsPressSlice,
+      AboutUsPressSliceDefaultPrimaryPressNotesItem,
+      AboutUsPressSliceDefaultPrimary,
+      AboutUsPressSliceVariation,
+      AboutUsPressSliceDefault,
       AboutUsQuoteSlice,
       AboutUsQuoteSliceDefaultPrimary,
       AboutUsQuoteSliceVariation,
