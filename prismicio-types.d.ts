@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | HoneymoonDesignSlice
   | HoneymoonFlipbookSlice
   | TravelWhySlice
   | TravelTripsSlice
@@ -834,6 +835,108 @@ export type HomeTravelCarouselSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *HoneymoonDesign → Default → Primary → items*
+ */
+export interface HoneymoonDesignSliceDefaultPrimaryItemsItem {
+  /**
+   * title field in *HoneymoonDesign → Default → Primary → items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: honeymoon_design.default.primary.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *HoneymoonDesign → Default → Primary → items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: honeymoon_design.default.primary.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *HoneymoonDesign → Default → Primary*
+ */
+export interface HoneymoonDesignSliceDefaultPrimary {
+  /**
+   * title field in *HoneymoonDesign → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: honeymoon_design.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *HoneymoonDesign → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: honeymoon_design.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * cta field in *HoneymoonDesign → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: honeymoon_design.default.primary.cta
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField;
+
+  /**
+   * items field in *HoneymoonDesign → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: honeymoon_design.default.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<
+    Simplify<HoneymoonDesignSliceDefaultPrimaryItemsItem>
+  >;
+}
+
+/**
+ * Default variation for HoneymoonDesign Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HoneymoonDesignSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HoneymoonDesignSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HoneymoonDesign*
+ */
+type HoneymoonDesignSliceVariation = HoneymoonDesignSliceDefault;
+
+/**
+ * HoneymoonDesign Shared Slice
+ *
+ * - **API ID**: `honeymoon_design`
+ * - **Description**: HoneymoonDesign
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HoneymoonDesignSlice = prismic.SharedSlice<
+  "honeymoon_design",
+  HoneymoonDesignSliceVariation
+>;
+
+/**
  * Primary content in *HoneymoonFlipbook → Default → Primary*
  */
 export interface HoneymoonFlipbookSliceDefaultPrimary {
@@ -1241,6 +1344,11 @@ declare module "@prismicio/client" {
       HomeTravelCarouselSliceDefaultPrimary,
       HomeTravelCarouselSliceVariation,
       HomeTravelCarouselSliceDefault,
+      HoneymoonDesignSlice,
+      HoneymoonDesignSliceDefaultPrimaryItemsItem,
+      HoneymoonDesignSliceDefaultPrimary,
+      HoneymoonDesignSliceVariation,
+      HoneymoonDesignSliceDefault,
       HoneymoonFlipbookSlice,
       HoneymoonFlipbookSliceDefaultPrimary,
       HoneymoonFlipbookSliceVariation,

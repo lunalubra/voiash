@@ -10,6 +10,7 @@ export const components = {
   home_form_cta: dynamic(() => import("./HomeFormCta")),
   home_instagram: dynamic(() => import("./HomeInstagram")),
   home_travel_carousel: dynamic(() => import("./HomeTravelCarousel")),
+  honeymoon_design: dynamic(() => import("./HoneymoonDesign")),
   honeymoon_flipbook: dynamic(() => import("./HoneymoonFlipbook")),
   navigation: dynamic(() => import("./Navigation")),
   travel_description: dynamic(() => import("./TravelDescription")),

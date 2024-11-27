@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "honeymoon_design": {
+              "type": "SharedSlice"
+            },
             "honeymoon_flipbook": {
               "type": "SharedSlice"
             },
