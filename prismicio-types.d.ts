@@ -5,6 +5,8 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | AboutUsValuesSlice
+  | AboutUsQuoteSlice
   | AboutUsDescriptionSlice
   | AboutUsHeroSlice
   | HoneymoonDesignSlice
@@ -375,6 +377,106 @@ type AboutUsHeroSliceVariation = AboutUsHeroSliceDefault;
 export type AboutUsHeroSlice = prismic.SharedSlice<
   "about_us_hero",
   AboutUsHeroSliceVariation
+>;
+
+/**
+ * Primary content in *AboutUsQuote → Default → Primary*
+ */
+export interface AboutUsQuoteSliceDefaultPrimary {
+  /**
+   * title field in *AboutUsQuote → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_quote.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+}
+
+/**
+ * Default variation for AboutUsQuote Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsQuoteSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutUsQuoteSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUsQuote*
+ */
+type AboutUsQuoteSliceVariation = AboutUsQuoteSliceDefault;
+
+/**
+ * AboutUsQuote Shared Slice
+ *
+ * - **API ID**: `about_us_quote`
+ * - **Description**: AboutUsQuote
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsQuoteSlice = prismic.SharedSlice<
+  "about_us_quote",
+  AboutUsQuoteSliceVariation
+>;
+
+/**
+ * Primary content in *AboutUsValues → Default → Primary*
+ */
+export interface AboutUsValuesSliceDefaultPrimary {
+  /**
+   * title field in *AboutUsValues → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_values.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *AboutUsValues → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_values.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for AboutUsValues Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsValuesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutUsValuesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUsValues*
+ */
+type AboutUsValuesSliceVariation = AboutUsValuesSliceDefault;
+
+/**
+ * AboutUsValues Shared Slice
+ *
+ * - **API ID**: `about_us_values`
+ * - **Description**: AboutUsValues
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsValuesSlice = prismic.SharedSlice<
+  "about_us_values",
+  AboutUsValuesSliceVariation
 >;
 
 /**
@@ -1460,6 +1562,14 @@ declare module "@prismicio/client" {
       AboutUsHeroSliceDefaultPrimary,
       AboutUsHeroSliceVariation,
       AboutUsHeroSliceDefault,
+      AboutUsQuoteSlice,
+      AboutUsQuoteSliceDefaultPrimary,
+      AboutUsQuoteSliceVariation,
+      AboutUsQuoteSliceDefault,
+      AboutUsValuesSlice,
+      AboutUsValuesSliceDefaultPrimary,
+      AboutUsValuesSliceVariation,
+      AboutUsValuesSliceDefault,
       FooterSlice,
       FooterSliceDefaultPrimaryLogosItem,
       FooterSliceDefaultPrimary,
