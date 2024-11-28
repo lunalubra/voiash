@@ -34,7 +34,7 @@ const HomeCarousel = ({ slice }: HomeCarouselProps): JSX.Element => {
 
   useInterval(() => {
     setActiveTab(tabsNumber === activeTab ? 1 : activeTab + 1);
-  }, 10000);
+  }, 4000);
 
   return (
     <section
@@ -63,6 +63,17 @@ const HomeCarousel = ({ slice }: HomeCarouselProps): JSX.Element => {
             className="min-w-full min-h-full bg-no-repeat bg-cover bg-center"
             style={{
               backgroundImage: `linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%), url('${item.image.url}')`
+            }}
+          />
+        ))}
+      </div>
+      <div className="absolute bottom-4 left-1/2 -translatex-1/2 z-20 flex gap-1">
+        {Array.from(Array(tabsNumber).keys()).map((_, index) => (
+          <div
+            className={`${index + 1 === activeTab ? "bg-brand-beige-200" : "bg-white"} min-w-[8px] min-h-[8px]  rounded-full cursor-pointer`}
+            key={index}
+            onClick={() => {
+              setActiveTab(index + 1);
             }}
           />
         ))}
