@@ -13,6 +13,20 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  @keyframes scroll {
+    to {
+      transform: translateX(calc(-100% - 0.1px));
+    }
+  }
+
+  .infinite-scroll {
+    animation: scroll 10s linear infinite alternate;
+  }
+
+  .infinite-scroll:hover {
+    animation-play-state: paused;
+  }
 }
 
 @layer base {

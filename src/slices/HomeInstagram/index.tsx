@@ -19,13 +19,13 @@ const HomeInstagram = ({ slice }: HomeInstagramProps): JSX.Element => {
       className="bg-[#F2F2F2]"
     >
       <div className="w-full max-w-screen-xl m-auto flex flex-col items-center gap-6 py-5">
-        <div className="font-playfair text-3xl md:text-4xl text-brand-beige-300 px-4">
+        <div className="font-playfair text-3xl md:text-4xl text-brand-beige-300 px-4 py-10">
           <PrismicRichText field={slice.primary.title} />
         </div>
-        <div className="flex items-center gap-6 max-w-full overflow-auto no-scrollbar px-4">
+        <div className="flex items-center gap-6 no-scrollbar px-4">
           {slice.primary.instagram.map((item, index) => (
             <div
-              className="[&_iframe]:max-h-[510px] md:[&_iframe]:max-h-[unset]"
+              className="[&_iframe]:max-h-[510px] md:[&_iframe]:max-h-[unset] max-w-full"
               key={index}
               dangerouslySetInnerHTML={{
                 __html: item.instagram_post_code!

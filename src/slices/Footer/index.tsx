@@ -15,11 +15,21 @@ const Footer = ({ slice }: FooterProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="w-full max-w-screen-2xl m-auto flex flex-col py-12 px-20 gap-12"
+      className="w-full max-w-screen-2xl m-auto flex flex-col py-12 px-20 gap-12 overflow-hidden"
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between infinite-scroll gap-16">
         {slice.primary.logos.map((item) => (
-          <div key={item.logo.id}>
+          <div key={item.logo.id} className="min-w-max">
+            <PrismicNextImage field={item.logo} alt="" />
+          </div>
+        ))}
+        {slice.primary.logos.map((item) => (
+          <div key={item.logo.id} className="min-w-max">
+            <PrismicNextImage field={item.logo} alt="" />
+          </div>
+        ))}
+        {slice.primary.logos.map((item) => (
+          <div key={item.logo.id} className="min-w-max">
             <PrismicNextImage field={item.logo} alt="" />
           </div>
         ))}
