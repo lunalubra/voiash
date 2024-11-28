@@ -67,7 +67,7 @@ const HomeCarousel = ({ slice }: HomeCarouselProps): JSX.Element => {
           />
         ))}
       </div>
-      <div className="absolute bottom-4 left-1/2 -translatex-1/2 z-20 flex gap-1">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-1">
         {Array.from(Array(tabsNumber).keys()).map((_, index) => (
           <div
             className={`${index + 1 === activeTab ? "bg-brand-beige-200" : "bg-white"} min-w-[8px] min-h-[8px]  rounded-full cursor-pointer`}
