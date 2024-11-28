@@ -2,6 +2,7 @@
 
 import { DatePickerWithRange } from "@/lib/DateRangePicker";
 import { Content, createClient } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 import {
   PrismicProvider,
   SliceComponentProps,
@@ -109,7 +110,7 @@ const FirstStep = ({
               amountOfTravelers: +event.target.value
             })
           }
-          className="border rounded-full w-full h-[46px] border-[#162136] px-4"
+          className="border rounded-full w-full h-[46px] font-martel border-[#162136] px-4"
         />
       </div>
       <button
@@ -249,7 +250,7 @@ const SecondStep = ({
         {+formValues.price + +((formValues.complement as any).price ?? 0)}€
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-2">
         <button
           onClick={handleGoBackward}
           className="font-playfair disabled:text-white text-xl px-8 py-4 md:py-3 rounded-full border border-[#162136] disabled:bg-[#162136] disabled:bg-opacity-60 bg-opacity-20 mt-5 md:mt-4"
@@ -258,7 +259,7 @@ const SecondStep = ({
         </button>
         <button
           onClick={handleSubmit}
-          className="font-playfair disabled:text-white text-xl px-8 py-4 md:py-3 rounded-full border border-[#162136] disabled:bg-[#162136] disabled:bg-opacity-60 bg-opacity-20 mt-5 md:mt-4"
+          className="font-playfair disabled:text-white text-xl px-6 md:px-8 py-4 md:py-3 rounded-full border border-[#162136] disabled:bg-[#162136] disabled:bg-opacity-60 bg-opacity-20 mt-5 md:mt-4"
         >
           Siguiente
         </button>
@@ -311,24 +312,24 @@ const ThirdStep = ({
               city: event.target.value
             })
           }
-          className="border rounded-full w-full h-[46px] border-[#162136] px-4"
+          className="border rounded-full w-full h-[46px] font-martel border-[#162136] px-4"
         />
       </div>
       <div className="w-full font-playfair text-center text-[#162136] text-2xl">
         ¿Qué <strong>tipo de viaje</strong> deseas?
       </div>
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2 justify-center">
         {slice.primary.type_of_trip.map(({ label }) => (
           <button
             key={label}
-            className={`${label === formValues.type ? "bg-[#707FC3]" : "bg-[#001159]"} py-6 px-8 font-playfair text-sm rounded-full text-white`}
+            className={`${label === formValues.type ? "bg-[#707FC3]" : "bg-[#001159]"} max-w-[125px] h-[60px] md:h-max md:max-w-max py-2 md:py-6 px-6 md:px-8 font-playfair text-sm rounded-full text-white`}
             onClick={() => setFormValues({ ...formValues, type: label! })}
           >
             {label?.toUpperCase()}
           </button>
         ))}
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-2">
         <button
           onClick={handleGoBackward}
           className="font-playfair disabled:text-white text-xl px-8 py-4 md:py-3 rounded-full border border-[#162136] disabled:bg-[#162136] disabled:bg-opacity-60 bg-opacity-20 mt-5 md:mt-4"
@@ -338,7 +339,7 @@ const ThirdStep = ({
         <button
           disabled={isDisabled}
           onClick={handleSubmit}
-          className="font-playfair disabled:text-white text-xl px-8 py-4 md:py-3 rounded-full border border-[#162136] disabled:bg-[#162136] disabled:bg-opacity-60 bg-opacity-20 mt-5 md:mt-4"
+          className="font-playfair disabled:text-white text-xl px-6 md:px-8 py-4 md:py-3 rounded-full border border-[#162136] disabled:bg-[#162136] disabled:bg-opacity-60 bg-opacity-20 mt-5 md:mt-4"
         >
           Siguiente
         </button>
@@ -402,7 +403,7 @@ const FourthStep = ({
         }
       >
         <div
-          className={`${formValues.isFlexible ? "bg-[#162136]" : "bg-white"} w-[12px] h-[12px] border border-[#162136] rounded-full`}
+          className={`${formValues.isFlexible ? "bg-[#162136]" : "bg-white"} min-w-[12px] min-h-[12px] border border-[#162136] rounded-full`}
         />
         Tengo flexibilidad
       </button>
@@ -426,6 +427,7 @@ const FourthStep = ({
 };
 
 const FifthStep = ({
+  slice,
   searchParams,
   handleGoBackward
 }: {
@@ -449,13 +451,15 @@ const FifthStep = ({
     phone: string;
     question: string;
     marketing: boolean;
+    policy: boolean;
   }>({
     fullName: queryParamsFullName ?? "",
     email: queryParamsEmail ?? "",
     prefix: queryParamsPrefix ?? "",
     phone: queryParamsPhone ?? "",
     question: queryParamsQuestion ?? "",
-    marketing: queryParamsMarketing ?? false
+    marketing: queryParamsMarketing ?? false,
+    policy: false
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -493,13 +497,15 @@ const FifthStep = ({
   }
 
   const isDisabled =
+    !formValues.policy ||
     !(
       formValues.fullName &&
       formValues.email &&
       formValues.prefix &&
       formValues.phone &&
       formValues.question
-    ) || isLoading;
+    ) ||
+    isLoading;
 
   return (
     <div className="w-full h-full flex flex-col gap-5">
@@ -517,10 +523,10 @@ const FifthStep = ({
               fullName: event.target.value
             })
           }
-          className="border rounded-full w-full h-[46px] border-[#162136] px-4"
+          className="border rounded-full w-full h-[46px] font-martel border-[#162136] px-4"
         />
       </div>
-      <div className="w-full flex gap-2">
+      <div className="w-full flex flex-col md:flex-row gap-4">
         <input
           placeholder="*Email"
           value={formValues.email}
@@ -530,30 +536,32 @@ const FifthStep = ({
               email: event.target.value
             })
           }
-          className="border rounded-full w-full h-[46px] border-[#162136] px-4"
+          className="border rounded-full w-full h-[46px] font-martel border-[#162136] px-4"
         />
-        <input
-          placeholder="+34"
-          value={formValues.prefix}
-          onChange={(event) =>
-            setFormValues({
-              ...formValues,
-              prefix: event.target.value
-            })
-          }
-          className="border rounded-full w-[64px] h-[46px] border-[#162136] px-4"
-        />
-        <input
-          placeholder="*Teléfono"
-          value={formValues.phone}
-          onChange={(event) =>
-            setFormValues({
-              ...formValues,
-              phone: event.target.value
-            })
-          }
-          className="border rounded-full w-full h-[46px] border-[#162136] px-4"
-        />
+        <div className="flex gap-4 w-full">
+          <input
+            placeholder="+34"
+            value={formValues.prefix}
+            onChange={(event) =>
+              setFormValues({
+                ...formValues,
+                prefix: event.target.value
+              })
+            }
+            className="border rounded-full w-[64px] h-[46px] border-[#162136] px-4"
+          />
+          <input
+            placeholder="*Teléfono"
+            value={formValues.phone}
+            onChange={(event) =>
+              setFormValues({
+                ...formValues,
+                phone: event.target.value
+              })
+            }
+            className="border rounded-full w-full h-[46px] font-martel border-[#162136] px-4"
+          />
+        </div>
       </div>
       <div className="w-full">
         <input
@@ -565,9 +573,34 @@ const FifthStep = ({
               question: event.target.value
             })
           }
-          className="border rounded-full w-full h-[46px] border-[#162136] px-4"
+          className="border rounded-full w-full h-[46px] font-martel border-[#162136] px-4"
         />
       </div>
+      <button
+        className="flex items-center gap-2 font-martel text-[#162136] text-[10px]"
+        onClick={() =>
+          setFormValues({ ...formValues, policy: !formValues.policy })
+        }
+      >
+        <div
+          className={`${formValues.policy ? "bg-[#162136]" : "bg-white"} min-w-[12px] min-h-[12px] border border-[#162136] rounded-full`}
+        />
+        <div>
+          <PrismicNextLink field={slice.primary.privacy_policy_pdf} />
+        </div>
+      </button>
+      <button
+        className="-mt-4 flex items-center gap-2 font-martel text-[#162136] text-[10px]"
+        onClick={() =>
+          setFormValues({ ...formValues, marketing: !formValues.marketing })
+        }
+      >
+        <div
+          className={`${formValues.marketing ? "bg-[#162136]" : "bg-white"} min-w-[12px] min-h-[12px] border border-[#162136] rounded-full`}
+        />
+        Me gustaría mantenerme informado sobre las últimas tendencias y
+        novedades en viajes.
+      </button>
       <div className="flex justify-between">
         <button
           disabled={isLoading}
@@ -622,15 +655,15 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
     <section
       firstta-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="w-full bg-no-repeat bg-cover bg-top h-full min-h-screen flex flex-col items-center justify-center gap-8"
+      className="w-full bg-no-repeat bg-cover bg-top h-full min-h-[900px] flex flex-col items-center justify-center gap-8 px-6 md:mt-0"
       style={{
         backgroundImage: `linear-gradient(360deg, rgb(22, 33, 54,1) 0%, rgba(22, 33, 54, 0) 50%), url('${slice.primary.background_image.url}')`
       }}
     >
-      <div className="font-playfair text-5xl text-[#162136] text-center">
+      <div className="font-playfair text-5xl text-[#162136] md:text-center ">
         ¿Quieres saber más?
       </div>
-      <div className="bg-white rounded-3xl min-w-[600px] p-10 relative">
+      <div className="bg-white rounded-3xl w-full max-w-[375px] md:max-w-[600px] md:min-w-[600px] p-10 relative">
         <Step
           slice={slice}
           searchParams={searchParams}
@@ -638,6 +671,17 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
           handleGoBackward={handleGoBackward}
         />
       </div>
+      {step === 1 && (
+        <div className="flex gap-2 w-full max-w-[600px] mx-auto text-left self-start">
+          <div className="min-w-[16px] h-[16px] rounded-full font-playfair border border-white text-white opacity-70 text-[10px] italic leading-none flex items-center justify-center">
+            i
+          </div>
+          <div className="text-white text-xs opacity-70">
+            El presupuesto por persona puede variar en función del destino,
+            <br /> las fechas del viaje y su duración.
+          </div>
+        </div>
+      )}
     </section>
   );
 };
