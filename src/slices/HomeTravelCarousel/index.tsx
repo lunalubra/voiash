@@ -41,7 +41,7 @@ const HomeTravelCarousel = ({
       <div className="font-playfair text-brand-beige-300 text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige-300 mt-5 md:mt-4">
         <PrismicNextLink field={slice.primary.cta} />
       </div>
-      <div className="hidden md:flex w-full max-w-full md:max-w-[1000px]">
+      <div className="hidden md:flex w-full max-w-[1000px]">
         <Carousel
           items={slides}
           startIndex={0}
@@ -56,15 +56,18 @@ const HomeTravelCarousel = ({
           arrows={{ hoverColor: "#b48149", color: "#e7c9a8" }}
         />
       </div>
-      <div className="flex md:hidden w-full max-w-full md:max-w-[800px]">
+      <div className="flex md:hidden w-full max-w-full">
         <Carousel
           items={slides}
           startIndex={0}
-          showArrows={false}
           showIndicators={false}
           showStatus={false}
-          perspective="500px"
-          width="250px"
+          containerWidth="100%"
+          width="200px"
+          height="200px"
+          perspective="150px"
+          defaultOption={{ widthFactor: 1.75, angleFactor: 0 }}
+          arrows={{ hoverColor: "#b48149", color: "#e7c9a8" }}
         />
       </div>
     </section>

@@ -15,7 +15,7 @@ const Footer = ({ slice }: FooterProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="w-full max-w-screen-2xl m-auto flex flex-col py-12 px-20 gap-12 overflow-hidden"
+      className="w-full max-w-screen-2xl m-auto flex flex-col py-6 px-8 md:py-12 md:px-20 md:gap-12 overflow-hidden"
     >
       <div className="flex items-center justify-between infinite-scroll gap-16">
         {slice.primary.logos.map((item) => (
@@ -34,14 +34,14 @@ const Footer = ({ slice }: FooterProps): JSX.Element => {
           </div>
         ))}
       </div>
-      <div className="flex items-center justify-between text-center">
-        <div>
+      <div className="flex items-center justify-between text-center gap-4 w-full">
+        <div className="min-w-[32px] min-h-[32px] [&_img]:min-w-full [&_img]:min-h-full md:min-w-[unset] md:min-h-[unset]">
           <PrismicNextImage field={slice.primary.logo} alt="" />
         </div>
-        <div className="text-brand-beige-400 font-martel text-[10px] leading-4 max-w-[620px]">
+        <div className="text-brand-beige-400 font-martel text-[5px] md:text-[10px] md:leading-4 max-w-[620px]">
           <PrismicRichText field={slice.primary.disclaimer} />
         </div>
-        <div className="text-brand-beige-400 font-martel text-[10px] leading-4">
+        <div className="text-brand-beige-400 font-martel text-[5px] md:text-[10px] md:leading-4 min-w-[50px]">
           <PrismicRichText field={slice.primary.address} />
         </div>
       </div>
