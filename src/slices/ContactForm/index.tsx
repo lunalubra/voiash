@@ -482,8 +482,6 @@ const FifthStep = ({
       })
     );
 
-    console.log(body);
-
     setIsLoading(true);
     const response = await fetch("/api/contact", {
       method: "post",

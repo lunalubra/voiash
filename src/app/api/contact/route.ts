@@ -54,10 +54,7 @@ export async function POST(request: Request) {
     }
   });
 
-  console.log("data!!!!!!!!!!", {
-    user: username,
-    pass: password
-  });
+  console.log("data!!!!!!!!!!", data);
 
   const fromDate = new Date(data.date.from);
   const toDate = new Date(data.date.to);
