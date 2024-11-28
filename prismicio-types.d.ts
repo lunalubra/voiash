@@ -748,7 +748,17 @@ export type AboutUsValuesSlice = prismic.SharedSlice<
 /**
  * Item in *ContactForm → Default → Primary → type of trip*
  */
-export interface ContactFormSliceDefaultPrimaryTypeOfTripItem {}
+export interface ContactFormSliceDefaultPrimaryTypeOfTripItem {
+  /**
+   * label field in *ContactForm → Default → Primary → type of trip*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.type_of_trip[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
 
 /**
  * Primary content in *ContactForm → Default → Primary*
@@ -763,16 +773,6 @@ export interface ContactFormSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   background_image: prismic.ImageField<never>;
-
-  /**
-   * trips field in *ContactForm → Default → Primary*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact_form.default.primary.trips
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  trips: prismic.ContentRelationshipField<"viajes">;
 
   /**
    * type of trip field in *ContactForm → Default → Primary*

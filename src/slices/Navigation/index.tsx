@@ -30,7 +30,7 @@ const DesktopNavigationItem = ({
     <div
       className={`font-playfair text-lg leading-6 text-${`[${color}]` || "brand-beige"} uppercase`}
     >
-      <PrismicNextLink field={link}>
+      <PrismicNextLink scroll={false} field={link}>
         {image.url ? <PrismicNextImage field={image} alt="" /> : link.text}
       </PrismicNextLink>
     </div>
@@ -84,7 +84,7 @@ const MobileNavigationItem = ({
 }) => {
   return (
     <div className="font-playfair text-xl leading-6 mb-4">
-      <PrismicNextLink field={link}>
+      <PrismicNextLink scroll={false} field={link}>
         {image.url ? <PrismicNextImage field={image} alt="" /> : link.text}
       </PrismicNextLink>
     </div>
@@ -136,7 +136,7 @@ const MobileNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
           ))}
           <div className="w-full max-w-[200px] h-[1px] rounded-sm bg-brand-beige my-4"></div>
           <div className="font-playfair text-brand-beige text-xl p-3 rounded-full border border-white bg-brand-beige bg-opacity-10 mt-4">
-            <PrismicNextLink field={slice.primary.mobile_cta} />
+            <PrismicNextLink scroll={false} field={slice.primary.mobile_cta} />
           </div>
         </div>
       )}

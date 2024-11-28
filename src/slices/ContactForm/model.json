@@ -20,22 +20,20 @@
             "thumbnails": []
           }
         },
-        "trips": {
-          "type": "Link",
-          "config": {
-            "label": "trips",
-            "select": "document",
-            "customtypes": [
-              "viajes"
-            ]
-          }
-        },
         "type_of_trip": {
           "type": "Group",
           "config": {
             "label": "type of trip",
             "repeat": true,
-            "fields": {}
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "label",
+                  "placeholder": ""
+                }
+              }
+            }
           }
         },
         "privacy_policy_pdf": {
