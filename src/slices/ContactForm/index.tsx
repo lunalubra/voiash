@@ -10,7 +10,7 @@ import {
 } from "@prismicio/react";
 import { addDays } from "date-fns";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { DateRange } from "react-day-picker";
 import Select from "react-select";
 
@@ -647,7 +647,9 @@ const ClientProvider = (props: ContactFormProps) => {
 
   return (
     <PrismicProvider client={client}>
-      <ContactForm {...props} />
+      <Suspense>
+        <ContactForm {...props} />
+      </Suspense>
     </PrismicProvider>
   );
 };
