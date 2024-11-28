@@ -636,18 +636,24 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
 
   if (queryParamsStep === null || queryParamsStep === undefined) {
     searchParams.set("step", "0");
-    router.push(window.location.href + `?${searchParams.toString()}`);
+    router.push(
+      window.location.origin + `/contacto` + `?${searchParams.toString()}`
+    );
   }
 
   function handleGoForward() {
     searchParams.set("step", `${step + 1}`);
-    router.push(window.location.href + `?${searchParams.toString()}`);
+    router.push(
+      window.location.origin + `/contacto` + `?${searchParams.toString()}`
+    );
     setStep(step + 1);
   }
 
   function handleGoBackward() {
     searchParams.set("step", `${step - 1}`);
-    router.push(window.location.href + `?${searchParams.toString()}`);
+    router.push(
+      window.location.origin + `/contacto` + `?${searchParams.toString()}`
+    );
     setStep(step - 1);
   }
 
