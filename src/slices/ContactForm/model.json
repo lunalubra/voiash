@@ -1,0 +1,54 @@
+{
+  "id": "contact_form",
+  "type": "SharedSlice",
+  "name": "ContactForm",
+  "description": "ContactForm",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "background image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "trips": {
+          "type": "Link",
+          "config": {
+            "label": "trips",
+            "select": "document",
+            "customtypes": [
+              "viajes"
+            ]
+          }
+        },
+        "type_of_trip": {
+          "type": "Group",
+          "config": {
+            "label": "type of trip",
+            "repeat": true,
+            "fields": {}
+          }
+        },
+        "privacy_policy_pdf": {
+          "type": "Link",
+          "config": {
+            "label": "privacy policy pdf",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

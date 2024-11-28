@@ -9,6 +9,7 @@ export const components = {
   about_us_quote: dynamic(() => import("./AboutUsQuote")),
   about_us_testimonials: dynamic(() => import("./AboutUsTestimonials")),
   about_us_values: dynamic(() => import("./AboutUsValues")),
+  contact_form: dynamic(() => import("./ContactForm")),
   footer: dynamic(() => import("./Footer")),
   hero: dynamic(() => import("./Hero")),
   home_carousel: dynamic(() => import("./HomeCarousel")),

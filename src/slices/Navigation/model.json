@@ -48,6 +48,13 @@
             "select": null,
             "allowText": true
           }
+        },
+        "forced_color": {
+          "type": "Color",
+          "config": {
+            "label": "forced color",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

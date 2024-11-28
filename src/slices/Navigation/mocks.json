@@ -57,6 +57,11 @@
 					"url": "http://twitter.com",
 					"text": "pack"
 				}
+			},
+			"forced_color": {
+				"__TYPE__": "FieldContent",
+				"value": "#98dba7",
+				"type": "Color"
 			}
 		},
 		"items": []

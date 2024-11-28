@@ -21,12 +21,56 @@
           "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
+      "label": {
+        "type": "Text",
+        "config": {
+          "label": "label",
+          "placeholder": ""
+        }
+      },
       "image": {
         "type": "Image",
         "config": {
           "label": "image",
           "constraint": {},
           "thumbnails": []
+        }
+      },
+      "min_budget": {
+        "type": "Number",
+        "config": {
+          "label": "min budget",
+          "placeholder": "2500"
+        }
+      },
+      "max_budget": {
+        "type": "Number",
+        "config": {
+          "label": "max budget",
+          "placeholder": "50000"
+        }
+      },
+      "options": {
+        "type": "Group",
+        "config": {
+          "label": "options",
+          "repeat": true,
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "label",
+                "placeholder": ""
+              }
+            },
+            "price": {
+              "type": "Number",
+              "config": {
+                "label": "price",
+                "placeholder": "500"
+              }
+            }
+          }
         }
       }
     }

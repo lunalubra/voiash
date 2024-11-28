@@ -19,13 +19,17 @@ export type NavigationProps = SliceComponentProps<Content.NavigationSlice>;
 
 const DesktopNavigationItem = ({
   link,
-  image
+  image,
+  color
 }: {
   link: LinkField;
   image: ImageField<never>;
+  color: string;
 }) => {
   return (
-    <div className="font-playfair text-lg leading-6 text-brand-beige uppercase">
+    <div
+      className={`font-playfair text-lg leading-6 text-${`[${color}]` || "brand-beige"} uppercase`}
+    >
       <PrismicNextLink field={link}>
         {image.url ? <PrismicNextImage field={image} alt="" /> : link.text}
       </PrismicNextLink>
@@ -46,6 +50,7 @@ const DesktopNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
             key={navigationItem.link.text}
             link={navigationItem.link}
             image={navigationItem.image}
+            color={slice.primary.forced_color as string}
           />
         ))}
       </div>
@@ -53,6 +58,7 @@ const DesktopNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
         <DesktopNavigationItem
           link={middleSection.link}
           image={middleSection.image}
+          color={slice.primary.forced_color as string}
         />
       </div>
       <div className="w-full flex items-center justify-around">
@@ -61,6 +67,7 @@ const DesktopNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
             key={navigationItem.link.text}
             link={navigationItem.link}
             image={navigationItem.image}
+            color={slice.primary.forced_color as string}
           />
         ))}
       </div>
@@ -98,7 +105,7 @@ const MobileNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
 
   return (
     <div className="w-full p-8" onClick={() => setIsModalOpen(!isModalOpen)}>
-      <HamburgerMenuIcon />
+      <HamburgerMenuIcon forcedColor={slice.primary.forced_color as string} />
       <div className="absolute top-4 left-1/2 -translate-x-1/2 ">
         <MobileNavigationItem link={imageItem.link} image={imageItem.image} />
       </div>

@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | ContactFormSlice
   | AboutUsPressSlice
   | AboutUsTestimonialsSlice
   | AboutUsValuesSlice
@@ -198,6 +199,31 @@ export type TiposDeViajesDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Viaje → options*
+ */
+export interface ViajesDocumentDataOptionsItem {
+  /**
+   * label field in *Viaje → options*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: viajes.options[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * price field in *Viaje → options*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 500
+   * - **API ID Path**: viajes.options[].price
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  price: prismic.NumberField;
+}
+
+/**
  * Content for Viaje documents
  */
 interface ViajesDocumentData {
@@ -213,6 +239,17 @@ interface ViajesDocumentData {
   title: prismic.RichTextField;
 
   /**
+   * label field in *Viaje*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: viajes.label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+
+  /**
    * image field in *Viaje*
    *
    * - **Field Type**: Image
@@ -222,6 +259,39 @@ interface ViajesDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * min budget field in *Viaje*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 2500
+   * - **API ID Path**: viajes.min_budget
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  min_budget: prismic.NumberField;
+
+  /**
+   * max budget field in *Viaje*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 50000
+   * - **API ID Path**: viajes.max_budget
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  max_budget: prismic.NumberField;
+
+  /**
+   * options field in *Viaje*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: viajes.options[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  options: prismic.GroupField<Simplify<ViajesDocumentDataOptionsItem>>;
 }
 
 /**
@@ -673,6 +743,88 @@ type AboutUsValuesSliceVariation = AboutUsValuesSliceDefault;
 export type AboutUsValuesSlice = prismic.SharedSlice<
   "about_us_values",
   AboutUsValuesSliceVariation
+>;
+
+/**
+ * Item in *ContactForm → Default → Primary → type of trip*
+ */
+export interface ContactFormSliceDefaultPrimaryTypeOfTripItem {}
+
+/**
+ * Primary content in *ContactForm → Default → Primary*
+ */
+export interface ContactFormSliceDefaultPrimary {
+  /**
+   * background image field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * trips field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.trips
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  trips: prismic.ContentRelationshipField<"viajes">;
+
+  /**
+   * type of trip field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.type_of_trip[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  type_of_trip: prismic.GroupField<
+    Simplify<ContactFormSliceDefaultPrimaryTypeOfTripItem>
+  >;
+
+  /**
+   * privacy policy pdf field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.privacy_policy_pdf
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  privacy_policy_pdf: prismic.LinkToMediaField;
+}
+
+/**
+ * Default variation for ContactForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactFormSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactForm*
+ */
+type ContactFormSliceVariation = ContactFormSliceDefault;
+
+/**
+ * ContactForm Shared Slice
+ *
+ * - **API ID**: `contact_form`
+ * - **Description**: ContactForm
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSlice = prismic.SharedSlice<
+  "contact_form",
+  ContactFormSliceVariation
 >;
 
 /**
@@ -1471,6 +1623,16 @@ export interface NavigationSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   mobile_cta: prismic.LinkField;
+
+  /**
+   * forced color field in *Navigation → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.default.primary.forced_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  forced_color: prismic.ColorField;
 }
 
 /**
@@ -1749,6 +1911,7 @@ declare module "@prismicio/client" {
       TiposDeViajesDocumentDataViajesItem,
       ViajesDocument,
       ViajesDocumentData,
+      ViajesDocumentDataOptionsItem,
       AllDocumentTypes,
       AboutUsDescriptionSlice,
       AboutUsDescriptionSliceDefaultPrimary,
@@ -1776,6 +1939,11 @@ declare module "@prismicio/client" {
       AboutUsValuesSliceDefaultPrimary,
       AboutUsValuesSliceVariation,
       AboutUsValuesSliceDefault,
+      ContactFormSlice,
+      ContactFormSliceDefaultPrimaryTypeOfTripItem,
+      ContactFormSliceDefaultPrimary,
+      ContactFormSliceVariation,
+      ContactFormSliceDefault,
       FooterSlice,
       FooterSliceDefaultPrimaryLogosItem,
       FooterSliceDefaultPrimary,
