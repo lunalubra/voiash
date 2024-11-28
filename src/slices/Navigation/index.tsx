@@ -26,9 +26,11 @@ const DesktopNavigationItem = ({
   image: ImageField<never>;
   color: string;
 }) => {
+  console.log(color);
+
   return (
     <div
-      className={`font-playfair text-lg leading-6 text-${`[${color}]` || "brand-beige"} uppercase`}
+      className={`${color ? "text-[" + color + "]" : "text-brand-beige-200"} font-playfair text-lg leading-6 uppercase`}
     >
       <PrismicNextLink scroll={false} field={link}>
         {image.url ? <PrismicNextImage field={image} alt="" /> : link.text}
