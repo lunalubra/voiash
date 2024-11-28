@@ -56,7 +56,7 @@ const DesktopNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
           />
         ))}
       </div>
-      <div className="w-full flex items-center justify-around">
+      <div className="flex items-center min-w-[200px] justify-center">
         <DesktopNavigationItem
           link={middleSection.link}
           image={middleSection.image}
