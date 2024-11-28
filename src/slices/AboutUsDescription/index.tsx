@@ -54,7 +54,7 @@ const AboutUsDescription = ({
         <div className="font-martel md:text-lg text-center md:text-justify text-white md:text-brand-beige-400">
           <PrismicRichText field={slice.primary.description} />
         </div>
-        <div className="font-playfair text-white md:text-brand-beige-300 text-xl px-8 py-4 md:py-3 rounded-full border border-white md:border-brand-beige-300 bg-black bg-opacity-40 md:bg-transparent mt-5 md:mt-4">
+        <div className="font-playfair text-white md:text-brand-beige-300 text-xl px-8 py-4 md:py-3 rounded-full border border-white md:border-brand-beige-300 bg-black bg-opacity-40 hover:bg-opacity-60 md:bg-transparent mt-5 md:mt-4">
           <PrismicNextLink field={slice.primary.cta} />
         </div>
       </div>

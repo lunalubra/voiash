@@ -47,7 +47,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         <div className="font-playfair text-3xl text-center md:text-4xl text-brand-beige-200">
           <PrismicRichText field={slice.primary.title} />
         </div>
-        <div className="font-playfair text-brand-beige-200 text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige-200 bg-black bg-opacity-40 mt-5 md:mt-4">
+        <div className="font-playfair text-brand-beige-200 text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige-200 bg-black bg-opacity-40 hover:bg-opacity-60 mt-5 md:mt-4">
           <PrismicNextLink field={slice.primary.cta} />
         </div>
       </div>

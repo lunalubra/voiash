@@ -18,7 +18,7 @@ const HomeDescription = ({ slice }: HomeDescriptionProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="w-full max-w-screen-xl m-auto flex flex-col md:flex-row justify-center gap-10 py-10"
     >
-      <div className="flex flex-col gap-8 px-8">
+      <div className="flex flex-col gap-8 px-8 md:mt-10">
         <div className="text-6xl font-playfair text-brand-beige-300">
           <PrismicRichText field={slice.primary.title} />
         </div>
@@ -38,7 +38,7 @@ const HomeDescription = ({ slice }: HomeDescriptionProps): JSX.Element => {
             <div className="font-playfair text-[50px] leading-[3rem] text-brand-beige">
               <PrismicRichText field={item.title} />
             </div>
-            <div className="font-playfair text-brand-beige text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige bg-black bg-opacity-40 mt-5 md:mt-4">
+            <div className="font-playfair text-brand-beige text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige bg-black bg-opacity-40 hover:bg-opacity-60 mt-5 md:mt-4">
               <PrismicNextLink field={item.cta} />
             </div>
           </div>
