@@ -30,9 +30,17 @@ const FirstStep = ({
 }) => {
   const [unfilteredDocuments, { state }] =
     useAllPrismicDocumentsByType("viajes");
-  const documents = unfilteredDocuments?.filter(
-    (document) => document.data.ensenar_en_el_formulario
-  );
+  const documents = unfilteredDocuments
+    ?.filter((document) => document.data.ensenar_en_el_formulario)
+    .sort((a, b) => {
+      if (a.data.label < b.data.label) {
+        return -1;
+      }
+      if (a.data.label > b.data.label) {
+        return 1;
+      }
+      return 0;
+    });
   const queryParamsTrip = JSON.parse(searchParams.get("trip") ?? "{}");
   const queryParamsAmountOfTravelers = searchParams.get("amountOfTravelers");
   const [formValues, setFormValues] = useState({
