@@ -18,7 +18,7 @@ const TravelDescription = ({ slice }: TravelDescriptionProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="w-full max-w-screen-xl m-auto flex flex-col items-center gap-9 py-16 px-8"
     >
-      <div className="font-playfair text-2xl md:text-5xl max-w-[600px] text-center text-brand-beige-300">
+      <div className="font-playfair text-4xl md:text-5xl max-w-[600px] text-center text-brand-beige-300">
         <PrismicRichText field={slice.primary.title} />
       </div>
       <div className="font-martel md:text-lg max-w-[700px] text-center text-brand-beige-400">
