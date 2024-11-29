@@ -1,6 +1,9 @@
+"use client";
+
 import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { motion } from "motion/react";
 
 /**
  * Props for `TravelWhy`.
@@ -29,14 +32,22 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
         </div>
         <div className="flex flex-col gap-20 justify-center max-w-[425px] my-6">
           {slice.primary.items.map((item, index) => (
-            <div key={index} className="w-full flex gap-9 items-start">
+            <motion.div
+              initial={{
+                translateX: index % 2 === 1 ? 10000 : -10000
+              }}
+              whileInView={{ translateX: 0 }}
+              transition={{ duration: index + 1 }}
+              key={index}
+              className="w-full flex gap-9 items-start"
+            >
               <div className="font-playfair text-[150px] leading-[75px] md:text-[170px] md:leading-[85px] text-brand-beige-300">
                 {index + 1}
               </div>
-              <div className="font-martel md:text-lg text-brand-beige-300 text-justify max-w-[315px]">
+              <div className="font-martel md:text-lg text-brand-beige-400 text-justify max-w-[315px]">
                 <PrismicRichText field={item.description} />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

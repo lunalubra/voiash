@@ -34,9 +34,11 @@ const HoneymoonDesign = ({ slice }: HoneymoonDesignProps): JSX.Element => {
         <div className="flex flex-wrap gap-8 w-full items-center justify-center mt-6 px-8 md:px-0">
           {slice.primary.items.map((item, index) => (
             <motion.div
-              initial={{ translateX: index % 2 === 1 ? 10000 : -10000 }}
-              animate={{ translateX: 0 }}
-              transition={{ duration: index + 1 }}
+              initial={{
+                opacity: 0
+              }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: index + 2 }}
               key={index}
               className="bg-white shadow-xl w-[370px] h-min md:w-[565px] md:h-[453px] rounded-3xl flex flex-col items-start md:items-center justify-center gap-8 md:gap-16 p-5 md:p-0"
             >
