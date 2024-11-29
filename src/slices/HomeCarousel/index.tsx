@@ -49,7 +49,7 @@ const HomeCarousel = ({ slice }: HomeCarouselProps): JSX.Element => {
         <div className="font-playfair text-brand-beige text-2xl md:text-3xl">
           <PrismicRichText field={slice.primary.subtitle} />
         </div>
-        <div className="w-min font-playfair text-brand-beige-200 text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige-200 bg-black bg-opacity-40 hover:bg-opacity-60 mt-5 md:mt-4">
+        <div className="w-min font-playfair text-brand-beige text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige bg-black bg-opacity-40 hover:bg-opacity-60 mt-5 md:mt-4">
           <PrismicNextLink field={slice.primary.cta} />
         </div>
       </div>
