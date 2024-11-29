@@ -86,7 +86,7 @@ const TripTypes = ({
       {Card}
 
       {isModalOpen && (
-        <div className="bg-black bg-opacity-80 fixed top-0 left-0 w-full h-full max-h-full overflow-y-auto z-50">
+        <div className="bg-black bg-opacity-80 fixed top-0 left-0 w-full min-h-full max-h-full overflow-y-auto z-50">
           {isLoading ? (
             "loading..."
           ) : (
