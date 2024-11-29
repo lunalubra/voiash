@@ -56,17 +56,17 @@ const HomeTravelCarousel = ({
           arrows={{ hoverColor: "#b48149", color: "#e7c9a8" }}
         />
       </div>
-      <div className="flex md:hidden w-full max-w-full">
+      <div className="flex md:hidden w-full max-w-[375px]">
         <Carousel
           items={slides}
           startIndex={0}
           showIndicators={false}
           showStatus={false}
           containerWidth="100%"
-          width="200px"
-          height="200px"
-          perspective="150px"
-          defaultOption={{ widthFactor: 1.75, angleFactor: 0 }}
+          width="250px"
+          height="370px"
+          perspective="500px"
+          defaultOption={{ widthFactor: 9.5, angleFactor: 0 }}
           arrows={{ hoverColor: "#b48149", color: "#e7c9a8" }}
         />
       </div>
