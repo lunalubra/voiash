@@ -92,7 +92,7 @@ const TripTypes = ({
           ) : (
             <div className="flex flex-col md:flex-row w-full h-full items-center justify-center max-w-screen-xl m-auto pt-24 md:pt-0">
               <div
-                className="absolute top-10 right-10"
+                className="absolute top-10 right-10 opacity-70 hover:opacity-100"
                 onClick={() => setIsModalOpen(false)}
               >
                 <CloseIcon />

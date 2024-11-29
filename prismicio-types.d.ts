@@ -292,6 +292,18 @@ interface ViajesDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   options: prismic.GroupField<Simplify<ViajesDocumentDataOptionsItem>>;
+
+  /**
+   * Enseñar en el formulario field in *Viaje*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: viajes.ensenar_en_el_formulario
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  ensenar_en_el_formulario: prismic.BooleanField;
 }
 
 /**

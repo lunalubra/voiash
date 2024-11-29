@@ -72,6 +72,15 @@
             }
           }
         }
+      },
+      "ensenar_en_el_formulario": {
+        "type": "Boolean",
+        "config": {
+          "label": "Enseñar en el formulario",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": true
+        }
       }
     }
   }
