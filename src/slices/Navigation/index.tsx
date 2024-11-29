@@ -110,7 +110,7 @@ const MobileNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
         <MobileNavigationItem link={imageItem.link} image={imageItem.image} />
       </div>
       {isModalOpen && (
-        <div className="w-full max-w-[343px] h-max absolute top-4 left-4 bg-black bg-opacity-80 p-8 rounded-3xl flex flex-col items-center">
+        <div className="w-full h-screen absolute top-0 left-0 bg-black bg-opacity-80 p-8 flex flex-col items-center">
           <div
             className="absolute top-6 right-6 opacity-70 hover:opacity-100"
             onClick={() => setIsModalOpen(false)}
