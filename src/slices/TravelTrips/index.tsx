@@ -116,7 +116,7 @@ const TripTypes = ({
                   <div key={`${trip?.id}-${index}`}>
                     <div
                       style={{
-                        backgroundImage: `linear-gradient(360deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 25%), url('${tripTypes.data?.image.url}')`
+                        backgroundImage: `linear-gradient(360deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 25%), url('${trip?.data.image.url}')`
                       }}
                       className="w-[200px] h-[360px] md:w-[246px] md:h-[429px] bg-cover bg-no-repeat bg-bottom flex items-end text-brand-beige font-playfair text-4xl p-4"
                     >

@@ -30,6 +30,7 @@
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
+    "react-full-screen": "^1.1.1",
     "react-pageflip": "^2.0.3",
     "react-responsive-3d-carousel": "^2.1.1",
     "react-select": "^5.8.3",
