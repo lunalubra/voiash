@@ -33,7 +33,7 @@ const HomeDescription = ({ slice }: HomeDescriptionProps): JSX.Element => {
             style={{
               backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url('${item.background.url}')`
             }}
-            className="min-w-[270px] w-[270px] h-[450px] md:min-w-[345px] md:w-[345px] md:h-[575px] rounded-xl flex flex-col items-start justify-center px-8 md:px-16"
+            className="hover:brightness-150 min-w-[270px] w-[270px] h-[450px] md:min-w-[345px] md:w-[345px] md:h-[575px] rounded-xl flex flex-col items-start justify-center px-8 md:px-16"
           >
             <div className="font-playfair text-[50px] leading-[3rem] text-brand-beige">
               <PrismicRichText field={item.title} />
