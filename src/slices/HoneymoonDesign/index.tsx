@@ -31,16 +31,14 @@ const HoneymoonDesign = ({ slice }: HoneymoonDesignProps): JSX.Element => {
         <div className="font-playfair text-brand-beige-300 text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige-300 mt-5 md:mt-4">
           <PrismicNextLink field={slice.primary.cta} />
         </div>
-        <div className="flex flex-wrap gap-8 w-full items-center justify-center mt-6 px-8 md:px-0">
+        <div className="flex flex-wrap gap-8 w-full items-center justify-center mt-6 px-8 md:px-0 mb-6">
           {slice.primary.items.map((item, index) => (
             <motion.div
-              initial={{
-                opacity: 0
-              }}
+              initial={false}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: index + 2 }}
+              transition={{ delay: index }}
               key={index}
-              className="bg-white shadow-xl w-[370px] h-min md:w-[565px] md:h-[453px] rounded-3xl flex flex-col items-start md:items-center justify-center gap-8 md:gap-16 p-5 md:p-0"
+              className="bg-white opacity-0 shadow-xl w-[370px] h-min md:w-[565px] md:h-[453px] rounded-3xl flex flex-col items-start md:items-center justify-center gap-8 md:gap-16 p-5 md:p-0"
             >
               <div
                 className={`${index % 2 === 1 ? "ml-auto" : "mr-auto"} md:ml-[unset] md:mr-[unset] md:text-center flex items-start`}
