@@ -115,15 +115,22 @@ const TripTypes = ({
                 {trips?.map((trip, index) => (
                   <div key={`${trip?.id}-${index}`}>
                     <div
-                      style={{
-                        // backgroundImage: `linear-gradient(360deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 25%), url('${trip?.data.image.url}')`
-                        backgroundImage: `url('${trip?.data.image.url}')`
-                      }}
+                      style={
+                        trip?.data.shouldrendertext
+                          ? {
+                              backgroundImage: `linear-gradient(360deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 25%), url('${trip?.data.image.url}')`
+                            }
+                          : {
+                              backgroundImage: `url('${trip?.data.image.url}')`
+                            }
+                      }
                       className="w-[200px] h-[360px] md:w-[246px] md:h-[429px] bg-cover bg-no-repeat bg-bottom flex items-end text-brand-beige font-playfair text-4xl p-4"
                     >
-                      {/* <div>
-                        <PrismicRichText field={trip?.data.title} />
-                      </div> */}
+                      {trip?.data.shouldrendertext && (
+                        <div>
+                          <PrismicRichText field={trip?.data.title} />
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}

@@ -304,6 +304,18 @@ interface ViajesDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   ensenar_en_el_formulario: prismic.BooleanField;
+
+  /**
+   * shouldRenderText field in *Viaje*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: viajes.shouldrendertext
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  shouldrendertext: prismic.BooleanField;
 }
 
 /**

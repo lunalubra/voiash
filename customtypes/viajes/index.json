@@ -81,6 +81,15 @@
           "placeholder_true": "true",
           "default_value": true
         }
+      },
+      "shouldrendertext": {
+        "type": "Boolean",
+        "config": {
+          "label": "shouldRenderText",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
       }
     }
   }
