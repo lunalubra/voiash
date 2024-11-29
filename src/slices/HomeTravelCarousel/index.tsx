@@ -35,7 +35,7 @@ const HomeTravelCarousel = ({
       data-slice-variation={slice.variation}
       className="w-full max-w-screen-xl m-auto flex flex-col items-center justify-center gap-6 px-4 py-16"
     >
-      <div className="font-playfair text-3xl text-brand-300 text-center">
+      <div className="font-playfair text-3xl text-brand-beige-300 text-center">
         <PrismicRichText field={slice.primary.title} />
       </div>
       <div className="font-playfair text-brand-beige-300 text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige-300 mt-5 md:mt-4">
