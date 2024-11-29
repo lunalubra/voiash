@@ -35,57 +35,112 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
       <div className="hidden md:flex w-full flex-col items-center justify-center gap-4">
         <FullScreen handle={handle}>
           <div className="flex items-center justify-center gap-4 min-w-[1000px] w-full h-full bg-white">
-            <div onClick={handleGoPrev}>
-              <Arrow />
-            </div>
-            {/* @ts-ignore */}
-            <HTMLFlipBook
-              ref={flipbookRef}
-              width={handle.active ? 1000 : 400}
-              height={handle.active ? 1000 : 570}
-              showPageCorners={false}
-              // className={""}
-              // style={undefined}
-              // startPage={0}
-              // minWidth={0}
-              // maxWidth={0}
-              // minHeight={0}
-              // maxHeight={0}
-              // drawShadow={false}
-              // flippingTime={0}
-              // usePortrait={false}
-              // startZIndex={0}
-              // autoSize={false}
-              // maxShadowOpacity={0}
-              // showCover={false}
-              // mobileScrollSupport={false}
-              // clickEventForward={false}
-              // useMouseEvents={false}
-              // swipeDistance={0}
-              // disableFlipByClick={false}
-            >
-              {[...Array(numPages).keys()].map((pNum) => (
-                <div key={pNum}>
-                  <Document
-                    file={pdfLink}
-                    onLoadSuccess={onDocumentLoadSuccess}
-                  >
-                    <div>
-                      <Page
-                        pageNumber={pNum + 1}
-                        width={handle.active ? 1000 : 400}
-                        height={handle.active ? 1000 : 570}
-                        renderAnnotationLayer={false}
-                        renderTextLayer={false}
-                      />
+            {!handle.active && (
+              <div onClick={handleGoPrev}>
+                <Arrow />
+              </div>
+            )}
+            {!handle.active && (
+              <>
+                {/* @ts-ignore */}
+                <HTMLFlipBook
+                  ref={flipbookRef}
+                  width={400}
+                  height={570}
+                  showPageCorners={false}
+                  // style={undefined}
+                  // startPage={0}
+                  // minWidth={0}
+                  // maxWidth={0}
+                  // minHeight={0}
+                  // maxHeight={0}
+                  // drawShadow={false}
+                  // flippingTime={0}
+                  // usePortrait={false}
+                  // startZIndex={0}
+                  // autoSize={false}
+                  // maxShadowOpacity={0}
+                  // showCover={false}
+                  // mobileScrollSupport={false}
+                  // clickEventForward={false}
+                  // useMouseEvents={false}
+                  // swipeDistance={0}
+                  // disableFlipByClick={false}
+                >
+                  {[...Array(numPages).keys()].map((pNum) => (
+                    <div key={pNum} className="w-full">
+                      <Document
+                        file={pdfLink}
+                        onLoadSuccess={onDocumentLoadSuccess}
+                      >
+                        <div>
+                          <Page
+                            pageNumber={pNum + 1}
+                            width={400}
+                            height={570}
+                            renderAnnotationLayer={false}
+                            renderTextLayer={false}
+                          />
+                        </div>
+                      </Document>
                     </div>
-                  </Document>
-                </div>
-              ))}
-            </HTMLFlipBook>
-            <div onClick={handleGoNext} className="rotate-180">
-              <Arrow />
-            </div>
+                  ))}
+                </HTMLFlipBook>
+              </>
+            )}
+            {handle.active && (
+              <>
+                {/* @ts-ignore */}
+                <HTMLFlipBook
+                  ref={flipbookRef}
+                  width={1000}
+                  height={1000}
+                  showPageCorners={false}
+                  // style={undefined}
+                  // startPage={0}
+                  // minWidth={0}
+                  // maxWidth={0}
+                  // minHeight={0}
+                  // maxHeight={0}
+                  // drawShadow={false}
+                  // flippingTime={0}
+                  // usePortrait={false}
+                  // startZIndex={0}
+                  // autoSize={false}
+                  // maxShadowOpacity={0}
+                  // showCover={false}
+                  // mobileScrollSupport={false}
+                  // clickEventForward={false}
+                  // useMouseEvents={false}
+                  // swipeDistance={0}
+                  // disableFlipByClick={false}
+                >
+                  {[...Array(numPages).keys()].map((pNum) => (
+                    <div key={pNum} className="w-full">
+                      <Document
+                        file={pdfLink}
+                        onLoadSuccess={onDocumentLoadSuccess}
+                      >
+                        <div>
+                          <Page
+                            pageNumber={pNum + 1}
+                            width={1000}
+                            height={1000}
+                            renderAnnotationLayer={false}
+                            renderTextLayer={false}
+                          />
+                        </div>
+                      </Document>
+                    </div>
+                  ))}
+                </HTMLFlipBook>
+              </>
+            )}
+            {!handle.active && (
+              <div onClick={handleGoNext} className="rotate-180">
+                <Arrow />
+              </div>
+            )}
           </div>
         </FullScreen>
         <button
