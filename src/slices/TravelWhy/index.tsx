@@ -24,7 +24,7 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
         <div className="font-playfair text-4xl md:text-5xl text-center text-brand-beige-300">
           <PrismicRichText field={slice.primary.title} />
         </div>
-        <div className="font-martel md:text-lg text-center max-w-[700px] text-brand-beige-300">
+        <div className="font-martel md:text-lg text-center max-w-[700px] text-brand-beige-400">
           <PrismicRichText field={slice.primary.description} />
         </div>
         <div className="font-playfair text-brand-beige-300 text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige-300">
