@@ -30,7 +30,7 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
         <div className="font-playfair text-brand-beige-300 text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige-300">
           <PrismicNextLink field={slice.primary.cta} />
         </div>
-        <div className="flex flex-col gap-20 justify-center max-w-[425px] mb-y">
+        <div className="flex flex-col gap-20 justify-center max-w-[425px] mb-10">
           {slice.primary.items.map((item, index) =>
             index % 2 === 1 ? (
               <motion.div
