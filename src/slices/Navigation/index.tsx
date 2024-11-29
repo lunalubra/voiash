@@ -28,7 +28,7 @@ const DesktopNavigationItem = ({
 }) => {
   return (
     <div
-      className={`${color ? "text-[" + color + "]" : "text-brand-beige-200"} font-playfair text-lg leading-6 uppercase`}
+      className={`${color ? "text-[" + color + "]" : "text-brand-beige"} font-playfair text-lg leading-6 uppercase active:italic`}
     >
       <PrismicNextLink scroll={false} field={link}>
         {image.url ? <PrismicNextImage field={image} alt="" /> : link.text}
@@ -43,7 +43,7 @@ const DesktopNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
   const secondSection = slice.primary.navigation_item.slice(3, 6)!;
 
   return (
-    <div className="w-full flex items-center justify-normal py-8 px-4 max-w-screen-xl m-auto">
+    <div className="w-full flex items-center justify-normal py-8 px-2 max-w-screen-xl m-auto">
       <div className="w-full flex items-center justify-around">
         {firsSection.map((navigationItem) => (
           <DesktopNavigationItem
@@ -54,7 +54,7 @@ const DesktopNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
           />
         ))}
       </div>
-      <div className="flex items-center min-w-[200px] justify-center">
+      <div className="flex items-center min-w-[150px] justify-center">
         <DesktopNavigationItem
           link={middleSection.link}
           image={middleSection.image}

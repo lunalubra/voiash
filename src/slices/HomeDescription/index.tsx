@@ -38,7 +38,7 @@ const HomeDescription = ({ slice }: HomeDescriptionProps): JSX.Element => {
             <div className="font-playfair text-[50px] leading-[3rem] text-brand-beige">
               <PrismicRichText field={item.title} />
             </div>
-            <div className="font-playfair text-brand-beige text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige bg-black bg-opacity-40 hover:bg-opacity-60 mt-5 md:mt-4">
+            <div className="font-playfair text-brand-beige text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige bg-black bg-opacity-40 hover:brightness-200 hover:bg-opacity-60 mt-5 md:mt-4">
               <PrismicNextLink field={item.cta} />
             </div>
           </div>
