@@ -30,7 +30,7 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
         <div className="font-playfair text-brand-beige-300 text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige-300">
           <PrismicNextLink field={slice.primary.cta} />
         </div>
-        <div className="flex flex-col gap-20 justify-center max-w-[425px] mb-10">
+        <div className="flex flex-col gap-20 justify-center max-w-[425px] mb-10 overflow-hidden h-full">
           {slice.primary.items.map((item, index) =>
             index % 2 === 1 ? (
               <motion.div
@@ -38,7 +38,7 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: index + 1 }}
                 key={index}
-                className="overflow-x-hidden pb-6 w-full flex gap-9 items-start"
+                className="h-full pb-6 w-full flex gap-9 items-start"
               >
                 <div className="font-playfair text-[150px] leading-[75px] md:text-[170px] md:leading-[85px] text-brand-beige-300">
                   {index + 1}
@@ -53,7 +53,7 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: index }}
                 key={index}
-                className="overflow-x-hidden pb-6 w-full flex gap-9 items-start"
+                className="pb-6 w-full flex gap-9 items-start"
               >
                 <div className="font-playfair text-[150px] leading-[75px] md:text-[170px] md:leading-[85px] text-brand-beige-300">
                   {index + 1}
