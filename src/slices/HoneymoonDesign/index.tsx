@@ -1,6 +1,9 @@
+"use client";
+
 import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { motion } from "motion/react";
 
 /**
  * Props for `HoneymoonDesign`.
@@ -30,12 +33,15 @@ const HoneymoonDesign = ({ slice }: HoneymoonDesignProps): JSX.Element => {
         </div>
         <div className="flex flex-wrap gap-8 w-full items-center justify-center mt-6 px-8 md:px-0">
           {slice.primary.items.map((item, index) => (
-            <div
+            <motion.div
+              initial={{ translateX: index % 2 === 1 ? 10000 : -10000 }}
+              animate={{ translateX: 0 }}
+              transition={{ duration: index + 1 }}
               key={index}
               className="bg-white shadow-xl w-[370px] h-min md:w-[565px] md:h-[453px] rounded-3xl flex flex-col items-start md:items-center justify-center gap-8 md:gap-16 p-5 md:p-0"
             >
               <div
-                className={`${index % 2 === 1 ? "ml-auto" : "mr-auto"} md:text-center flex items-start`}
+                className={`${index % 2 === 1 ? "ml-auto" : "mr-auto"} md:ml-[unset] md:mr-[unset] md:text-center flex items-start`}
               >
                 <div className="md:text-center font-playfair text-[100px] md:text-[170px] leading-[45px] md:leading-[65px] text-brand-beige-300">
                   {index + 1}
@@ -47,7 +53,7 @@ const HoneymoonDesign = ({ slice }: HoneymoonDesignProps): JSX.Element => {
               <div className="font-martel text-brand-beige-400 md:text-lg text-justify md:text-center max-w-[350px]">
                 <PrismicRichText field={item.description} />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
