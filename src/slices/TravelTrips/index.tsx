@@ -72,7 +72,7 @@ const TripTypes = ({
         style={{
           backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.3) 50%), url('${tripTypes.data?.image.url}')`
         }}
-        className={`w-full ${index === 3 ? "h-[180px]" : "h-[415px]"} md:h-[310px] rounded-xl bg-no-repeat bg-cover bg-center flex items-end px-2 py-2 md:px-7 md:py-4 font-playfair text-white text-3xl md:text-4xl`}
+        className={`hover:brightness-125 w-full ${index === 3 ? "h-[180px]" : "h-[415px]"} md:h-[310px] rounded-xl bg-no-repeat bg-cover bg-center flex items-end px-2 py-2 md:px-7 md:py-4 font-playfair text-white text-3xl md:text-4xl`}
         onClick={() => setIsModalOpen(true)}
       >
         <PrismicRichText field={tripTypes.data.title} />
