@@ -30,15 +30,18 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
         <div className="font-playfair text-brand-beige-300 text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige-300">
           <PrismicNextLink field={slice.primary.cta} />
         </div>
-        <div className="flex flex-col gap-20 justify-center max-w-[425px] mb-10 overflow-hidden h-full">
+        <div className="flex flex-col gap-20 justify-center max-w-[425px] mb-10 overflow-y-hidden h-full">
           {slice.primary.items.map((item, index) =>
             index % 2 === 1 ? (
               <motion.div
-                initial={{ x: "49vw", opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                transition={{ duration: index + 1 }}
                 key={index}
-                className="h-full pb-6 w-full flex gap-9 items-start"
+                initial={{ translateX: "49wv", opacity: 0 }}
+                animate={{
+                  translateX: 0,
+                  opacity: 1,
+                  transition: { duration: index }
+                }}
+                className="translate-x-[49vw] opacity-0 h-full pb-6 w-full flex gap-9 items-start"
               >
                 <div className="font-playfair text-[150px] leading-[75px] md:text-[170px] md:leading-[85px] text-brand-beige-300">
                   {index + 1}
@@ -49,11 +52,14 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
               </motion.div>
             ) : (
               <motion.div
-                initial={{ x: "-49vw", opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                transition={{ duration: index }}
+                initial={{ translateX: "-49wv", opacity: 0 }}
+                animate={{
+                  translateX: 0,
+                  opacity: 1,
+                  transition: { duration: index }
+                }}
                 key={index}
-                className="pb-6 w-full flex gap-9 items-start"
+                className="translate-x-[-49vw] opacity-0 pb-6 w-full flex gap-9 items-start"
               >
                 <div className="font-playfair text-[150px] leading-[75px] md:text-[170px] md:leading-[85px] text-brand-beige-300">
                   {index + 1}
