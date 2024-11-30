@@ -2,10 +2,12 @@
 
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createClient } from "@/prismicio";
 import { PrismicNextLink } from "@prismicio/next";
 import CloseIcon from "../../images/CloseIcon";
+import { useRef } from "react";
+import Arrow from "../../images/Arrow";
 
 /**
  * Props for `TravelTrips`.
@@ -47,6 +49,7 @@ const TripTypes = ({
     useState<(Content.ViajesDocument<string> | undefined)[]>();
   const [isLoading, setIsLoading] = useState(false);
   const client = createClient();
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const getTrips = async () => {
@@ -111,29 +114,57 @@ const TripTypes = ({
                   <PrismicNextLink field={tripTypes.data.cta} />
                 </div>
               </div>
-              <div className="flex gap-4 md:flex-1 max-w-full overflow-auto no-scrollbar px-6 mt-2 md:mt-0 md:px-0">
-                {trips?.map((trip, index) => (
-                  <div key={`${trip?.id}-${index}`}>
-                    <div
-                      style={
-                        trip?.data.shouldrendertext
-                          ? {
-                              backgroundImage: `linear-gradient(360deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 25%), url('${trip?.data.image.url}')`
-                            }
-                          : {
-                              backgroundImage: `url('${trip?.data.image.url}')`
-                            }
-                      }
-                      className="w-[200px] h-[360px] md:w-[246px] md:h-[429px] bg-cover bg-no-repeat bg-bottom flex items-end text-brand-beige font-playfair text-4xl p-4"
-                    >
-                      {trip?.data.shouldrendertext && (
-                        <div>
-                          <PrismicRichText field={trip?.data.title} />
-                        </div>
-                      )}
+              <div className="flex gap-4 items-center flex-1 overflow-hidden">
+                <div
+                  className="hidden md:flex relative z-[60]"
+                  onClick={() => {
+                    console.log(carouselRef.current?.scrollLeft);
+                    carouselRef.current?.scrollTo({
+                      left: carouselRef.current?.scrollLeft - 246,
+                      behavior: "smooth"
+                    });
+                  }}
+                >
+                  <Arrow />
+                </div>
+                <div
+                  ref={carouselRef}
+                  className="flex gap-4 overflow-auto no-scrollbar px-6 mt-2 md:mt-0 md:px-0"
+                >
+                  {trips?.map((trip, index) => (
+                    <div key={`${trip?.id}-${index}`}>
+                      <div
+                        style={
+                          trip?.data.shouldrendertext
+                            ? {
+                                backgroundImage: `linear-gradient(360deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 25%), url('${trip?.data.image.url}')`
+                              }
+                            : {
+                                backgroundImage: `url('${trip?.data.image.url}')`
+                              }
+                        }
+                        className="w-[200px] h-[360px] md:w-[246px] md:h-[429px] bg-cover bg-no-repeat bg-bottom flex items-end text-brand-beige font-playfair text-4xl p-4"
+                      >
+                        {trip?.data.shouldrendertext && (
+                          <div>
+                            <PrismicRichText field={trip?.data.title} />
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                <div
+                  className="hidden md:flex  relative z-[60] rotate-180"
+                  onClick={() => {
+                    carouselRef.current?.scrollBy({
+                      left: carouselRef.current?.scrollLeft + 246,
+                      behavior: "smooth"
+                    });
+                  }}
+                >
+                  <Arrow />
+                </div>
               </div>
             </div>
           )}
