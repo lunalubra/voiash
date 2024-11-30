@@ -83,7 +83,7 @@ const MobileNavigationItem = ({
   image: ImageField<never>;
 }) => {
   return (
-    <div className="font-playfair text-xl leading-6 mb-4 active:italic">
+    <div className="font-playfair text-3xl leading-8 mb-4 active:italic">
       <PrismicNextLink scroll={false} field={link}>
         {image.url ? <PrismicNextImage field={image} alt="" /> : link.text}
       </PrismicNextLink>
@@ -117,7 +117,7 @@ const MobileNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
           >
             <CloseIcon />
           </div>
-          <div className="mb-4">
+          <div className="mb-6">
             <MobileNavigationItem
               link={imageItem.link}
               image={imageItem.image}
@@ -134,7 +134,7 @@ const MobileNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
               />
             </div>
           ))}
-          <div className="w-full max-w-[200px] h-[1px] rounded-sm bg-brand-beige my-4"></div>
+          <div className="w-full max-w-[200px] h-[1px] rounded-sm bg-brand-beige my-6"></div>
           <div className="font-playfair text-brand-beige text-xl p-3 rounded-full border border-white bg-brand-beige bg-opacity-10 mt-4">
             <PrismicNextLink scroll={false} field={slice.primary.mobile_cta} />
           </div>
