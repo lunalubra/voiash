@@ -20,15 +20,12 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
   }
 
   function handleGoNext() {
-    console.log(flipbookRef.current.pageFlip());
     flipbookRef.current.pageFlip().flipNext();
   }
 
   function handleGoPrev() {
     flipbookRef.current.pageFlip().flipPrev();
   }
-
-  console.log(handle.active);
 
   return (
     <div className="w-full flex items-center justify-center">

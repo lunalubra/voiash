@@ -3,7 +3,7 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { motion } from "motion/react";
+import * as motion from "motion/react-client";
 
 /**
  * Props for `HoneymoonDesign`.
@@ -34,8 +34,9 @@ const HoneymoonDesign = ({ slice }: HoneymoonDesignProps): JSX.Element => {
         <div className="flex flex-wrap gap-8 w-full items-center justify-center mt-6 px-8 md:px-0 mb-6">
           {slice.primary.items.map((item, index) => (
             <motion.div
-              initial={false}
+              initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
               transition={{ delay: index }}
               key={index}
               className="bg-white opacity-0 shadow-xl w-[370px] h-min md:w-[565px] md:h-[453px] rounded-3xl flex flex-col items-start md:items-center justify-center gap-8 md:gap-16 p-5 md:p-0"

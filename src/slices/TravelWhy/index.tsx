@@ -1,9 +1,7 @@
-"use client";
-
 import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { motion } from "motion/react";
+import * as motion from "motion/react-client";
 
 /**
  * Props for `TravelWhy`.
@@ -30,16 +28,20 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
         <div className="font-playfair text-brand-beige-300 text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige-300">
           <PrismicNextLink field={slice.primary.cta} />
         </div>
-        <div className="flex flex-col gap-20 justify-center max-w-[425px] mb-10 overflow-y-hidden h-full">
+        <div className="flex flex-col gap-20 justify-center max-w-[425px] mb-10 h-full">
           {slice.primary.items.map((item, index) =>
             index % 2 === 1 ? (
               <motion.div
                 key={index}
-                initial={{ translateX: "49wv", opacity: 0 }}
-                animate={{
+                initial={{ translateX: "49vw", opacity: 0 }}
+                viewport={{ once: true }}
+                whileInView={{
                   translateX: 0,
                   opacity: 1,
-                  transition: { duration: index }
+                  transition: {
+                    delay: index,
+                    duration: 1
+                  }
                 }}
                 className="translate-x-[49vw] opacity-0 h-full pb-6 w-full flex gap-9 items-start"
               >
@@ -52,11 +54,12 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
               </motion.div>
             ) : (
               <motion.div
-                initial={{ translateX: "-49wv", opacity: 0 }}
-                animate={{
+                initial={{ translateX: "-49vw", opacity: 0 }}
+                viewport={{ once: true }}
+                whileInView={{
                   translateX: 0,
                   opacity: 1,
-                  transition: { duration: index }
+                  transition: { delay: index, duration: 1 }
                 }}
                 key={index}
                 className="translate-x-[-49vw] opacity-0 pb-6 w-full flex gap-9 items-start"
