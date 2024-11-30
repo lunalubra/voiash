@@ -70,7 +70,7 @@ export async function POST(request: Request) {
             <p>Ciudad de residencia: ${data.city}</p>
             <p>Email: ${data.email}</p>
             <p>Teléfono: ${data.prefix} ${data.phone}</p>
-            <p>Como nos conoció: ${data.question}</p>
+            ${data.question && `<p>Como nos conoció: ${data.question}</p>`}
             <p>¿Ha aceptado ser enviado material de marketing? ${data.marketing ? "Si" : "No"}</p>
             <p>Tipo de viaje: ${data.type}</p>
             <p>Lugar de viaje: ${data.trip.label}</p>

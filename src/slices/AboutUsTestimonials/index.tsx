@@ -22,7 +22,7 @@ const AboutUsTestimonials = ({
       className="md:bg-[#f5f5f5] pt-16 md:py-16"
     >
       <div className="w-full max-w-screen-xl m-auto pt-10 md:py-10 md:bg-[#eaeaea] flex flex-col gap-8 relative">
-        <div className="px-4 font-playfair text-[150px] md:text-[300px] md:absolute top-0 left-0 text-[#162136] leading-[16px] mt-10">
+        <div className="px-4 font-playfair text-[150px] md:text-[300px] md:absolute top-0 left-0 text-[#162136] leading-[16px] -mt-6 -mb-2 md:mb-0 md:mt-10">
           “
         </div>
         <div className="px-4 font-playfair text-4xl md:text-5xl text-[#162136] md:pl-[150px]">
