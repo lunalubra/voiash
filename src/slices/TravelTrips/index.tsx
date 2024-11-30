@@ -86,13 +86,13 @@ const TripTypes = ({
       {Card}
 
       {isModalOpen && (
-        <div className="bg-black bg-opacity-80 fixed top-0 left-0 w-full min-h-full max-h-full overflow-y-auto z-50">
+        <div className="bg-black bg-opacity-80 fixed top-0 left-0 w-full min-h-full max-h-full overflow-y-auto z-50 flex items-center justify-center">
           {isLoading ? (
             "loading..."
           ) : (
             <div className="flex flex-col md:flex-row w-full h-full items-center justify-center max-w-screen-xl m-auto pt-24 md:pt-0">
               <div
-                className="absolute top-10 right-10 opacity-70 hover:opacity-100"
+                className="absolute top-10 right-10 opacity-70 hover:opacity-100 z-[100]"
                 onClick={() => setIsModalOpen(false)}
               >
                 <CloseIcon />
