@@ -152,12 +152,30 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
         </button>
       </div>
       <div className="flex md:hidden w-full items-center justify-center">
-        {/* @ts-ignore */}
         <HTMLFlipBook
           mobileScrollSupport={true}
           width={320}
           height={500}
           showPageCorners={false}
+          className={""}
+          style={{}}
+          startPage={0}
+          size={"fixed"}
+          minWidth={0}
+          maxWidth={0}
+          minHeight={0}
+          maxHeight={0}
+          drawShadow={false}
+          flippingTime={0}
+          usePortrait={false}
+          startZIndex={0}
+          autoSize={false}
+          maxShadowOpacity={0}
+          showCover={false}
+          clickEventForward={false}
+          useMouseEvents={false}
+          swipeDistance={0}
+          disableFlipByClick={false}
         >
           {[...Array(numPages).keys()].map((pNum) => (
             <div key={pNum}>
