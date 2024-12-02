@@ -105,7 +105,10 @@ const MobileNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
   ];
 
   return (
-    <div className="w-full p-8" onClick={() => setIsModalOpen(!isModalOpen)}>
+    <div
+      className="w-full max-w-full p-8"
+      onClick={() => setIsModalOpen(!isModalOpen)}
+    >
       <HamburgerMenuIcon forcedColor={slice.primary.forced_color as string} />
       <div className="absolute top-4 left-1/2 -translate-x-1/2 ">
         <MobileNavigationItem link={imageItem.link} image={imageItem.image} />
@@ -118,7 +121,7 @@ const MobileNavigation = ({ slice }: { slice: NavigationProps["slice"] }) => {
           >
             <CloseIcon />
           </div>
-          <div className="mb-6">
+          <div className="mb-6 -mt-4">
             <MobileNavigationItem
               link={imageItem.link}
               image={imageItem.image}
