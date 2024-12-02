@@ -3,6 +3,8 @@
 import Flipbook from "@/components/Flipbook";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import dynamic from "next/dynamic";
+
 /**
  * Props for `HoneymoonFlipbook`.
  */
@@ -13,6 +15,8 @@ export type HoneymoonFlipbookProps =
  * Component for "HoneymoonFlipbook" Slices.
  */
 const HoneymoonFlipbook = ({ slice }: HoneymoonFlipbookProps): JSX.Element => {
+  if (typeof window === "undefined") return <></>;
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -24,4 +28,6 @@ const HoneymoonFlipbook = ({ slice }: HoneymoonFlipbookProps): JSX.Element => {
   );
 };
 
-export default HoneymoonFlipbook;
+export default dynamic(() => Promise.resolve(HoneymoonFlipbook), {
+  ssr: false
+});
