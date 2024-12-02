@@ -14,9 +14,10 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/l
 
 function Flipbook({ pdfLink }: { pdfLink: string }) {
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const [numPages, setNumPages] = useState(5);
   const flipbookRef = useRef<any>(null);
   const handle = useFullScreenHandle();
+  const [numPages, setNumPages] = useState<number>();
+  const [pageNumber, setPageNumber] = useState<number>(1);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
@@ -34,34 +35,16 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
 
   if (isMobile) {
     return (
-      <div className="w-full flex items-center justify-center">
-        {/* @ts-ignore */}
-        <HTMLFlipBook
-          mobileScrollSupport={true}
-          width={320}
-          height={500}
-          showPageCorners={false}
-        >
-          {[...Array(numPages).keys()].map((pNum) => (
-            <div key={pNum}>
-              <Document
-                onError={console.log}
-                file={pdfLink}
-                onLoadSuccess={onDocumentLoadSuccess}
-              >
-                <div>
-                  <Page
-                    pageNumber={pNum + 1}
-                    width={320}
-                    height={500}
-                    renderAnnotationLayer={false}
-                    renderTextLayer={false}
-                  />
-                </div>
-              </Document>
-            </div>
-          ))}
-        </HTMLFlipBook>
+      <div className="w-full flex items-center justify-center max-w-full">
+        <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
+          <Page
+            pageNumber={pageNumber}
+            renderAnnotationLayer={false}
+            renderTextLayer={false}
+            width={325}
+            height={500}
+          />
+        </Document>
       </div>
     );
   }
