@@ -166,7 +166,6 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
           minHeight={0}
           maxHeight={0}
           drawShadow={false}
-          flippingTime={0}
           usePortrait={false}
           startZIndex={0}
           autoSize={false}
