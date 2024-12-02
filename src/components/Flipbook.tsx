@@ -152,6 +152,7 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
         </button>
       </div>
       <div className="flex md:hidden w-full items-center justify-center">
+        {/* @ts-ignore */}
         <HTMLFlipBook
           mobileScrollSupport={true}
           width={320}
