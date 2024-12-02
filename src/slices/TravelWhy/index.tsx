@@ -60,7 +60,7 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
                   translateX: 0,
                   opacity: 1,
                   transition: {
-                    delay: index * 0.5,
+                    delay: index * 0.3,
                     duration: 0.5
                   }
                 }}

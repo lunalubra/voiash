@@ -102,7 +102,7 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
                 <HTMLFlipBook
                   ref={flipbookRef}
                   width={600}
-                  height={849px}
+                  height={849}
                   showPageCorners={false}
                   // style={undefined}
                   // startPage={0}
@@ -134,7 +134,7 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
                           <Page
                             pageNumber={pNum + 1}
                             width={600}
-                            height={849px}
+                            height={849}
                             renderAnnotationLayer={false}
                             renderTextLayer={false}
                           />
