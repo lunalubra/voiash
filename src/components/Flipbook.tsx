@@ -7,6 +7,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 import dynamic from "next/dynamic";
 import Arrow from "../images/Arrow";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import CloseIcon from "../images/CloseIcon";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.mjs`;
 
@@ -33,12 +34,19 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
     <div className="w-full flex items-center justify-center">
       <div className="hidden md:flex w-full flex-col items-center justify-center gap-4">
         <FullScreen handle={handle}>
-          <div className="flex items-center justify-center gap-4 min-w-[1000px] w-full h-full bg-white">
-            {!handle.active && (
-              <div onClick={handleGoPrev}>
-                <Arrow />
+          <div className="flex items-center justify-center gap-4 min-w-[1000px] w-full h-full bg-white relative">
+            {handle.active && (
+              <div
+                onClick={handle.exit}
+                className="[&_path]:stroke-brand-beige-300 absolute top-16 right-16 z-50"
+              >
+                <CloseIcon />
               </div>
             )}
+
+            <div onClick={handleGoPrev}>
+              <Arrow />
+            </div>
             {!handle.active && (
               <>
                 {/* @ts-ignore */}
@@ -131,7 +139,7 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
                   mobileScrollSupport={true}
                   ref={flipbookRef}
                   width={1000}
-                  height={1000}
+                  height={1415}
                   showPageCorners={false}
                   // style={undefined}
                   // startPage={0}
@@ -162,7 +170,7 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
                           <Page
                             pageNumber={pNum + 1}
                             width={1000}
-                            height={1000}
+                            height={1415}
                             renderAnnotationLayer={false}
                             renderTextLayer={false}
                           />
@@ -173,11 +181,9 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
                 </HTMLFlipBook>
               </>
             )}
-            {!handle.active && (
-              <div onClick={handleGoNext} className="rotate-180">
-                <Arrow />
-              </div>
-            )}
+            <div onClick={handleGoNext} className="rotate-180">
+              <Arrow />
+            </div>
           </div>
         </FullScreen>
         <button
