@@ -37,7 +37,7 @@ const HoneymoonDesign = ({ slice }: HoneymoonDesignProps): JSX.Element => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index }}
+              transition={{ delay: index * 0.5 }}
               key={index}
               className="bg-white opacity-0 shadow-xl w-[370px] h-min md:w-[565px] md:h-[453px] rounded-3xl flex flex-col items-start md:items-center justify-center gap-8 md:gap-16 p-5 md:p-0"
             >
