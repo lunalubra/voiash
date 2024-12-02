@@ -147,6 +147,7 @@ const SecondStep = ({
   handleGoBackward: () => void;
 }) => {
   const queryParamsTrip = JSON.parse(searchParams.get("trip") ?? "{}");
+  const queryParamsAmountOfTravelers = searchParams.get("amountOfTravelers");
   const [document, { state }] = usePrismicDocumentByUID(
     "viajes",
     queryParamsTrip.value
@@ -259,7 +260,9 @@ const SecondStep = ({
 
       <div className="font-martel text-3xl text-[#162136]">
         Total:{" "}
-        {+formValues.price + +((formValues.complement as any).price ?? 0)}€
+        {+(queryParamsAmountOfTravelers ?? 1) *
+          (+formValues.price + +((formValues.complement as any).price ?? 0))}
+        €
       </div>
 
       <div className="flex justify-between gap-2">
