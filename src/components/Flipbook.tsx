@@ -51,25 +51,6 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
               <>
                 {/* @ts-ignore */}
                 <HTMLFlipBook
-                  className={""}
-                  style={{}}
-                  startPage={0}
-                  size={"fixed"}
-                  minWidth={0}
-                  maxWidth={0}
-                  minHeight={0}
-                  maxHeight={0}
-                  drawShadow={false}
-                  usePortrait={false}
-                  startZIndex={0}
-                  autoSize={false}
-                  maxShadowOpacity={0}
-                  showCover={false}
-                  clickEventForward={false}
-                  useMouseEvents={false}
-                  swipeDistance={0}
-                  disableFlipByClick={false}
-                  mobileScrollSupport={true}
                   ref={flipbookRef}
                   width={400}
                   height={570}
@@ -119,28 +100,9 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
               <>
                 {/* @ts-ignore */}
                 <HTMLFlipBook
-                  className={""}
-                  style={{}}
-                  startPage={0}
-                  size={"fixed"}
-                  minWidth={0}
-                  maxWidth={0}
-                  minHeight={0}
-                  maxHeight={0}
-                  drawShadow={false}
-                  usePortrait={false}
-                  startZIndex={0}
-                  autoSize={false}
-                  maxShadowOpacity={0}
-                  showCover={false}
-                  clickEventForward={false}
-                  useMouseEvents={false}
-                  swipeDistance={0}
-                  disableFlipByClick={false}
-                  mobileScrollSupport={true}
                   ref={flipbookRef}
-                  width={1000}
-                  height={1415}
+                  width={600}
+                  height={849px}
                   showPageCorners={false}
                   // style={undefined}
                   // startPage={0}
@@ -171,8 +133,8 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
                         <div>
                           <Page
                             pageNumber={pNum + 1}
-                            width={1000}
-                            height={1415}
+                            width={600}
+                            height={849px}
                             renderAnnotationLayer={false}
                             renderTextLayer={false}
                           />
