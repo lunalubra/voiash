@@ -43,6 +43,7 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
               <>
                 {/* @ts-ignore */}
                 <HTMLFlipBook
+                  mobileScrollSupport={true}
                   ref={flipbookRef}
                   width={400}
                   height={570}
@@ -91,6 +92,7 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
               <>
                 {/* @ts-ignore */}
                 <HTMLFlipBook
+                  mobileScrollSupport={true}
                   ref={flipbookRef}
                   width={1000}
                   height={1000}
@@ -151,7 +153,12 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
       </div>
       <div className="flex md:hidden w-full items-center justify-center">
         {/* @ts-ignore */}
-        <HTMLFlipBook width={320} height={500} showPageCorners={false}>
+        <HTMLFlipBook
+          mobileScrollSupport={true}
+          width={320}
+          height={500}
+          showPageCorners={false}
+        >
           {[...Array(numPages).keys()].map((pNum) => (
             <div key={pNum}>
               <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
