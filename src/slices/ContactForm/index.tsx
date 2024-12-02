@@ -221,7 +221,7 @@ const SecondStep = ({
             className="accent-[#162136] bg-white w-full"
           />
           <div className="font-martel text-[#162136] text-xs">
-            Mín: {document.data.min_budget}
+            Mín por persona: {document.data.min_budget}
           </div>
           {!!tripHasComplement && (
             <div className="font-martel text-[#162136] text-2xl">
