@@ -5,6 +5,7 @@ import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import ErrorBoundary from "../lib/ErrorBoundary";
 
 // This component renders your homepage.
 //
@@ -31,5 +32,9 @@ export default async function Index() {
   const client = createClient();
   const home = await client.getByUID("page", "inicio");
 
-  return <SliceZone slices={home.data.slices} components={components} />;
+  return (
+    <ErrorBoundary>
+      <SliceZone slices={home.data.slices} components={components} />
+    </ErrorBoundary>
+  );
 }
