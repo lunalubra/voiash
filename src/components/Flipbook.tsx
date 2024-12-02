@@ -96,6 +96,7 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
                   {[...Array(numPages).keys()].map((pNum) => (
                     <div key={pNum} className="w-full">
                       <Document
+                        onError={console.log}
                         file={pdfLink}
                         onLoadSuccess={onDocumentLoadSuccess}
                       >
@@ -165,6 +166,7 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
                       <Document
                         file={pdfLink}
                         onLoadSuccess={onDocumentLoadSuccess}
+                        onError={console.log}
                       >
                         <div>
                           <Page
@@ -221,7 +223,11 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
         >
           {[...Array(numPages).keys()].map((pNum) => (
             <div key={pNum}>
-              <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
+              <Document
+                onError={console.log}
+                file={pdfLink}
+                onLoadSuccess={onDocumentLoadSuccess}
+              >
                 <div>
                   <Page
                     pageNumber={pNum + 1}
