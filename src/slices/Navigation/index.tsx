@@ -28,6 +28,7 @@ const DesktopNavigationItem = ({
 }) => {
   return (
     <div
+      onClick={() => typeof window !== "undefined" && window.scroll({ top: 0 })}
       className={`${color ? "text-[" + color + "]" : "text-brand-beige"} font-playfair text-lg leading-6 uppercase active:italic`}
     >
       <PrismicNextLink scroll={false} field={link}>
