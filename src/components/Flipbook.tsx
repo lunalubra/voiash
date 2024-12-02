@@ -37,7 +37,7 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
 
   if (isMobile) {
     return (
-      <div className="w-full flex items-center justify-center max-w-full gap-2 px-2">
+      <div className="w-full flex items-center justify-center max-w-full gap-3 px-2">
         <div onClick={handleGoPrev}>
           <Arrow />
         </div>
@@ -46,7 +46,7 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
             pageNumber={pageNumber}
             renderAnnotationLayer={false}
             renderTextLayer={false}
-            width={300}
+            width={280}
             height={500}
           />
         </Document>
