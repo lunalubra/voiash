@@ -114,7 +114,7 @@ const TripTypes = ({
                   <PrismicNextLink field={tripTypes.data.cta} />
                 </div>
               </div>
-              <div className="flex gap-4 items-center flex-1 overflow-hidden">
+              <div className="flex gap-4 items-center flex-1 max-w-full md:max-w-[unset] overflow-hidden">
                 <div
                   className="hidden md:flex relative z-[60]"
                   onClick={() => {
@@ -129,7 +129,7 @@ const TripTypes = ({
                 </div>
                 <div
                   ref={carouselRef}
-                  className="flex gap-4 overflow-auto no-scrollbar px-6 mt-2 md:mt-0 md:px-0"
+                  className="flex gap-4 max-w-full md:max-w-[unset] overflow-auto no-scrollbar px-6 mt-2 md:mt-0 md:px-0"
                 >
                   {trips?.map((trip, index) => (
                     <div key={`${trip?.id}-${index}`}>
