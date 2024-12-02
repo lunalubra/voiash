@@ -44,15 +44,17 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
           showPageCorners={false}
         >
           {[...Array(numPages).keys()].map((pNum) => (
-            <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
-              <Page
-                pageNumber={pageNumber}
-                renderAnnotationLayer={false}
-                renderTextLayer={false}
-                width={325}
-                height={500}
-              />
-            </Document>
+            <div key={pNum}>
+              <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
+                <Page
+                  pageNumber={pageNumber}
+                  renderAnnotationLayer={false}
+                  renderTextLayer={false}
+                  width={325}
+                  height={500}
+                />
+              </Document>
+            </div>
           ))}
         </HTMLFlipBook>
       </div>
