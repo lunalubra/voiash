@@ -39,8 +39,15 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           className="w-full absolute top-0 left-0 -z-[1] h-[667px] md:h-[720px] bg-no-repeat bg-center bg-cover"
         />
       ) : (
-        <div className="w-full absolute -top-1/2 translate-y-1/2 left-50 -z-[1] [&_video]:min-w-min md:[&_video]:min-w-full [&_video]:w-full h-[667px] [&_video]:h-[667px] md:[&_video]:h-auto md:h-[720px] overflow-hidden">
-          <video src={media?.url} autoPlay muted loop playsInline />
+        <div className="w-full absolute -top-1/2 translate-y-1/2 left-50 -z-[1] h-[667px] md:h-[720px] overflow-hidden">
+          <video
+            src={media?.url}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-[667px] w-auto max-w-max"
+          />
         </div>
       )}
       <div className="flex w-full h-full items-center justify-center flex-col bg-[radial-gradient(circle,_rgba(0,0,0,0.4)_0%,_rgba(0,0,0,0)_100%)]">
