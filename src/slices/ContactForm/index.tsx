@@ -574,7 +574,7 @@ const FifthStep = ({
       </div>
       <div className="w-full">
         <input
-          placeholder="¿Còmo nos has conocido?"
+          placeholder="¿Cómo nos has conocido?"
           value={formValues.question}
           onChange={(event) =>
             setFormValues({

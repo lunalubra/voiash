@@ -43,7 +43,7 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
                     duration: 0.5
                   }
                 }}
-                className="translate-x-[49vw] opacity-0 h-full pb-6 w-full flex gap-9 items-start"
+                className="translate-x-[49vw] opacity-0 h-full pb-6 w-full flex gap-2 md:gap-9 items-start"
               >
                 <div className="font-playfair text-[150px] leading-[75px] md:text-[170px] md:leading-[85px] text-brand-beige-300">
                   {index + 1}
@@ -65,7 +65,7 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
                   }
                 }}
                 key={index}
-                className="translate-x-[-49vw] opacity-0 pb-6 w-full flex gap-9 items-start"
+                className="translate-x-[-49vw] opacity-0 pb-6 w-full flex gap-2 md:gap-9 items-start"
               >
                 <div className="font-playfair text-[150px] leading-[75px] md:text-[170px] md:leading-[85px] text-brand-beige-300">
                   {index + 1}
