@@ -24,27 +24,35 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
   }
 
   function handleGoNext() {
-    flipbookRef.current.pageFlip().flipNext();
+    flipbookRef?.current?.pageFlip()?.flipNext();
+    setPageNumber(pageNumber + 1);
   }
 
   function handleGoPrev() {
-    flipbookRef.current.pageFlip().flipPrev();
+    flipbookRef?.current?.pageFlip()?.flipPrev();
+    setPageNumber(pageNumber - 1);
   }
 
   if (typeof window === "undefined") return;
 
   if (isMobile) {
     return (
-      <div className="w-full flex items-center justify-center max-w-full">
+      <div className="w-full flex items-center justify-center max-w-full gap-2 px-2">
+        <div onClick={handleGoPrev}>
+          <Arrow />
+        </div>
         <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
           <Page
             pageNumber={pageNumber}
             renderAnnotationLayer={false}
             renderTextLayer={false}
-            width={325}
+            width={300}
             height={500}
           />
         </Document>
+        <div onClick={handleGoNext} className="rotate-180">
+          <Arrow />
+        </div>
       </div>
     );
   }
