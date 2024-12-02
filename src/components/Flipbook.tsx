@@ -27,6 +27,8 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
     flipbookRef.current.pageFlip().flipPrev();
   }
 
+  if (typeof window === "undefined") return;
+
   return (
     <div className="w-full flex items-center justify-center">
       <div className="hidden md:flex w-full flex-col items-center justify-center gap-4">
