@@ -36,15 +36,25 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
   if (isMobile) {
     return (
       <div className="w-full flex items-center justify-center max-w-full">
-        <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
-          <Page
-            pageNumber={pageNumber}
-            renderAnnotationLayer={false}
-            renderTextLayer={false}
-            width={325}
-            height={500}
-          />
-        </Document>
+        {/* @ts-ignore */}
+        <HTMLFlipBook
+          ref={flipbookRef}
+          width={400}
+          height={570}
+          showPageCorners={false}
+        >
+          {[...Array(numPages).keys()].map((pNum) => (
+            <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
+              <Page
+                pageNumber={pageNumber}
+                renderAnnotationLayer={false}
+                renderTextLayer={false}
+                width={325}
+                height={500}
+              />
+            </Document>
+          ))}
+        </HTMLFlipBook>
       </div>
     );
   }
