@@ -39,8 +39,8 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
                   translateX: 0,
                   opacity: 1,
                   transition: {
-                    delay: index,
-                    duration: 1
+                    delay: index * 0.5,
+                    duration: 0.5
                   }
                 }}
                 className="translate-x-[49vw] opacity-0 h-full pb-6 w-full flex gap-9 items-start"
@@ -59,7 +59,10 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
                 whileInView={{
                   translateX: 0,
                   opacity: 1,
-                  transition: { delay: index, duration: 1 }
+                  transition: {
+                    delay: index * 0.5,
+                    duration: 0.5
+                  }
                 }}
                 key={index}
                 className="translate-x-[-49vw] opacity-0 pb-6 w-full flex gap-9 items-start"
