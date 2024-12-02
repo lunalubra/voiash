@@ -8,10 +8,12 @@ import dynamic from "next/dynamic";
 import Arrow from "../images/Arrow";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import CloseIcon from "../images/CloseIcon";
+import { useMediaQuery } from "usehooks-ts";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.mjs`;
 
 function Flipbook({ pdfLink }: { pdfLink: string }) {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   const [numPages, setNumPages] = useState(5);
   const flipbookRef = useRef<any>(null);
   const handle = useFullScreenHandle();
@@ -30,9 +32,43 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
 
   if (typeof window === "undefined") return;
 
+  if (isMobile) {
+    return (
+      <div className="w-full flex items-center justify-center">
+        {/* @ts-ignore */}
+        <HTMLFlipBook
+          mobileScrollSupport={true}
+          width={320}
+          height={500}
+          showPageCorners={false}
+        >
+          {[...Array(numPages).keys()].map((pNum) => (
+            <div key={pNum}>
+              <Document
+                onError={console.log}
+                file={pdfLink}
+                onLoadSuccess={onDocumentLoadSuccess}
+              >
+                <div>
+                  <Page
+                    pageNumber={pNum + 1}
+                    width={320}
+                    height={500}
+                    renderAnnotationLayer={false}
+                    renderTextLayer={false}
+                  />
+                </div>
+              </Document>
+            </div>
+          ))}
+        </HTMLFlipBook>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full flex items-center justify-center">
-      <div className="hidden md:flex w-full flex-col items-center justify-center gap-4">
+      <div className="flex w-full flex-col items-center justify-center gap-4">
         <FullScreen handle={handle}>
           <div className="flex items-center justify-center gap-4 min-w-[1000px] w-full h-full bg-white relative">
             {handle.active && (
@@ -156,53 +192,6 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
         >
           Ver más
         </button>
-      </div>
-      <div className="flex md:hidden w-full items-center justify-center">
-        {/* @ts-ignore */}
-        <HTMLFlipBook
-          className={""}
-          style={{}}
-          startPage={0}
-          size={"fixed"}
-          minWidth={0}
-          maxWidth={0}
-          minHeight={0}
-          maxHeight={0}
-          drawShadow={false}
-          usePortrait={false}
-          startZIndex={0}
-          autoSize={false}
-          maxShadowOpacity={0}
-          showCover={false}
-          clickEventForward={false}
-          useMouseEvents={false}
-          swipeDistance={0}
-          disableFlipByClick={false}
-          mobileScrollSupport={true}
-          width={320}
-          height={500}
-          showPageCorners={false}
-        >
-          {[...Array(numPages).keys()].map((pNum) => (
-            <div key={pNum}>
-              <Document
-                onError={console.log}
-                file={pdfLink}
-                onLoadSuccess={onDocumentLoadSuccess}
-              >
-                <div>
-                  <Page
-                    pageNumber={pNum + 1}
-                    width={320}
-                    height={500}
-                    renderAnnotationLayer={false}
-                    renderTextLayer={false}
-                  />
-                </div>
-              </Document>
-            </div>
-          ))}
-        </HTMLFlipBook>
       </div>
     </div>
   );
