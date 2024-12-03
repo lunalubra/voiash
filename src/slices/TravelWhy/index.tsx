@@ -28,7 +28,7 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
         <div className="font-playfair text-brand-beige-300 text-xl px-8 py-4 md:py-3 rounded-full border border-brand-beige-300">
           <PrismicNextLink field={slice.primary.cta} />
         </div>
-        <div className="flex flex-col gap-20 justify-center max-w-[425px] mb-10 h-full">
+        <div className="flex flex-col gap-10 md:gap-20 justify-center max-w-[425px] mb-10 h-full px-4 md:px-0">
           {slice.primary.items.map((item, index) =>
             index % 2 === 1 ? (
               <motion.div
@@ -48,7 +48,7 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
                 <div className="font-playfair text-[150px] leading-[75px] md:text-[170px] md:leading-[85px] text-brand-beige-300">
                   {index + 1}
                 </div>
-                <div className="font-martel md:text-lg text-brand-beige-400 text-justify max-w-[315px]">
+                <div className="font-martel text-sm md:text-lg text-brand-beige-400 text-justify max-w-[315px]">
                   <PrismicRichText field={item.description} />
                 </div>
               </motion.div>
@@ -70,7 +70,7 @@ const TravelWhy = ({ slice }: TravelWhyProps): JSX.Element => {
                 <div className="font-playfair text-[150px] leading-[75px] md:text-[170px] md:leading-[85px] text-brand-beige-300">
                   {index + 1}
                 </div>
-                <div className="font-martel md:text-lg text-brand-beige-400 text-justify max-w-[315px]">
+                <div className="font-martel text-sm md:text-lg text-brand-beige-400 text-justify max-w-[315px]">
                   <PrismicRichText field={item.description} />
                 </div>
               </motion.div>
