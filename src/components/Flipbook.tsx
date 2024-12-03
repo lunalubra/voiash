@@ -37,22 +37,40 @@ function Flipbook({ pdfLink }: { pdfLink: string }) {
 
   if (isMobile) {
     return (
-      <div className="w-full flex items-center justify-center max-w-full gap-3 px-2 min-h-[507px]">
-        <div onClick={handleGoPrev}>
-          <Arrow />
-        </div>
-        <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
-          <Page
-            pageNumber={pageNumber}
-            renderAnnotationLayer={false}
-            renderTextLayer={false}
-            width={280}
-            height={500}
-          />
-        </Document>
-        <div onClick={handleGoNext} className="rotate-180">
-          <Arrow />
-        </div>
+      <div className="w-full flex flex-col items-center">
+        <FullScreen handle={handle}>
+          <div className="bg-white h-full w-full flex items-center justify-center max-w-full gap-3 px-2 min-h-[507px]">
+            {handle.active && (
+              <div
+                onClick={handle.exit}
+                className="[&_path]:stroke-brand-beige-300 absolute top-16 right-16 z-50"
+              >
+                <CloseIcon />
+              </div>
+            )}
+            <div onClick={handleGoPrev}>
+              <Arrow />
+            </div>
+            <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
+              <Page
+                pageNumber={pageNumber}
+                renderAnnotationLayer={false}
+                renderTextLayer={false}
+                width={280}
+                height={500}
+              />
+            </Document>
+            <div onClick={handleGoNext} className="rotate-180">
+              <Arrow />
+            </div>
+          </div>
+        </FullScreen>
+        <button
+          onClick={handle.enter}
+          className="text-brand-beige-300 font-martel"
+        >
+          Ver más
+        </button>
       </div>
     );
   }
