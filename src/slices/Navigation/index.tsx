@@ -84,7 +84,10 @@ const MobileNavigationItem = ({
   image: ImageField<never>;
 }) => {
   return (
-    <div className="font-playfair text-3xl leading-8 mb-4 active:italic">
+    <div
+      onClick={() => typeof window !== "undefined" && window.scroll({ top: 0 })}
+      className="font-playfair text-3xl leading-8 mb-4 active:italic"
+    >
       <PrismicNextLink scroll={false} field={link}>
         {image.url ? <PrismicNextImage field={image} alt="" /> : link.text}
       </PrismicNextLink>
