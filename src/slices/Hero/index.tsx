@@ -46,7 +46,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             muted
             loop
             playsInline
-            className="h-[667px] w-auto max-w-max"
+            className="h-[667px] md:h-auto md:w-full w-auto max-w-max"
           />
         </div>
       )}
