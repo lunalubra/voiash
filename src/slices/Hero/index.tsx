@@ -1,6 +1,9 @@
+"use client";
+
 import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { motion, useAnimate } from "motion/react";
 
 /**
  * Props for `Hero`.
@@ -24,6 +27,7 @@ export interface LinkType {
 const Hero = ({ slice }: HeroProps): JSX.Element => {
   const media = slice.primary.background as unknown as LinkType | undefined;
   const isImage = media?.kind === "image";
+  const [scope, animate] = useAnimate();
 
   return (
     <section
@@ -41,12 +45,20 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       ) : (
         <div className="w-full absolute -top-1/2 translate-y-1/2 left-50 -z-[1] h-[667px] md:h-[720px] overflow-hidden">
           <video
+            onLoadedData={() =>
+              animate(scope.current, { opacity: 0 }, { duration: 1 })
+            }
             src={media?.url}
             autoPlay
             muted
             loop
             playsInline
             className="h-[667px] md:h-auto md:w-full w-auto max-w-max absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
+          />
+          <motion.div
+            initial={{ opacity: 1 }}
+            className="absolute top-0 left-0 w-full h-full bg-black"
+            ref={scope}
           />
         </div>
       )}
