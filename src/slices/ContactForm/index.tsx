@@ -212,6 +212,7 @@ const SecondStep = ({
         <div className="w-full">
           <input
             type="range"
+            step="50"
             value={formValues.price}
             onChange={(event) =>
               setFormValues({ ...formValues, price: +event.target.value })
