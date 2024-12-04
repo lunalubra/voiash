@@ -445,11 +445,12 @@ const FourthStep = ({
 const FifthStep = ({
   slice,
   searchParams,
+  handleGoForward,
   handleGoBackward
 }: {
   slice: ContactFormProps["slice"];
   searchParams: URLSearchParams;
-  handleGoForward: () => void;
+  handleGoForward: (isEnd?: boolean) => void;
   handleGoBackward: () => void;
 }) => {
   const queryParamsFullName = searchParams.get("fullName");
@@ -506,6 +507,10 @@ const FifthStep = ({
 
     if (response.ok) {
       setIsSuccess(true);
+      for (let key of [...searchParams.keys()]) {
+        searchParams.delete(key);
+      }
+      handleGoForward(true);
     }
     setIsLoading(false);
   }
@@ -519,6 +524,19 @@ const FifthStep = ({
       formValues.phone
     ) ||
     isLoading;
+
+  if (isSuccess) {
+    return (
+      <div className="w-full h-full flex flex-col gap-10">
+        <div className="w-full font-playfair text-center text-[#162136] text-2xl">
+          Formulario enviado correctamente
+        </div>
+        <div className="w-full font-playfair text-center text-[#162136] text-2xl">
+          ✔
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-full flex flex-col gap-5">
@@ -645,7 +663,8 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
   const formattedStep = +(searchParams.get("step") ?? 0);
   const router = useRouter();
   const [step, setStep] = useState(formattedStep);
-  const Step = Steps[step];
+  const Step = Steps[step ?? 0];
+  console.log(step);
 
   if (queryParamsStep === null || queryParamsStep === undefined) {
     searchParams.set("step", "0");
@@ -654,12 +673,16 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
     );
   }
 
-  function handleGoForward() {
-    searchParams.set("step", `${step + 1}`);
+  function handleGoForward(isEnd?: boolean) {
+    if (isEnd) {
+      searchParams.set("step", `${0}`);
+    } else {
+      searchParams.set("step", `${step + 1}`);
+      setStep(step + 1);
+    }
     router.push(
       window.location.origin + `/contacto` + `?${searchParams.toString()}`
     );
-    setStep(step + 1);
   }
 
   function handleGoBackward() {
