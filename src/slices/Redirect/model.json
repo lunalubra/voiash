@@ -1,0 +1,29 @@
+{
+  "id": "redirect",
+  "type": "SharedSlice",
+  "name": "Redirect",
+  "description": "Redirect",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "redirect": {
+          "type": "Link",
+          "config": {
+            "label": "redirect",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | RedirectSlice
   | ContactFormSlice
   | AboutUsPressSlice
   | AboutUsTestimonialsSlice
@@ -1690,6 +1691,51 @@ export type NavigationSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Redirect → Default → Primary*
+ */
+export interface RedirectSliceDefaultPrimary {
+  /**
+   * redirect field in *Redirect → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: redirect.default.primary.redirect
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  redirect: prismic.LinkField;
+}
+
+/**
+ * Default variation for Redirect Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RedirectSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<RedirectSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Redirect*
+ */
+type RedirectSliceVariation = RedirectSliceDefault;
+
+/**
+ * Redirect Shared Slice
+ *
+ * - **API ID**: `redirect`
+ * - **Description**: Redirect
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RedirectSlice = prismic.SharedSlice<
+  "redirect",
+  RedirectSliceVariation
+>;
+
+/**
  * Primary content in *TravelDescription → Default → Primary*
  */
 export interface TravelDescriptionSliceDefaultPrimary {
@@ -2016,6 +2062,10 @@ declare module "@prismicio/client" {
       NavigationSliceDefaultPrimary,
       NavigationSliceVariation,
       NavigationSliceDefault,
+      RedirectSlice,
+      RedirectSliceDefaultPrimary,
+      RedirectSliceVariation,
+      RedirectSliceDefault,
       TravelDescriptionSlice,
       TravelDescriptionSliceDefaultPrimary,
       TravelDescriptionSliceVariation,

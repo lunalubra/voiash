@@ -20,6 +20,7 @@ export const components = {
   honeymoon_design: dynamic(() => import("./HoneymoonDesign")),
   honeymoon_flipbook: dynamic(() => import("./HoneymoonFlipbook")),
   navigation: dynamic(() => import("./Navigation")),
+  redirect: dynamic(() => import("./Redirect")),
   travel_description: dynamic(() => import("./TravelDescription")),
   travel_trips: dynamic(() => import("./TravelTrips")),
   travel_why: dynamic(() => import("./TravelWhy")),
